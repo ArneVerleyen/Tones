@@ -1,0 +1,48 @@
+@import '../../app.scss';
+.header-container{
+    .header-inner-container {
+        display: flex;
+        justify-content: space-between;
+        background-color: $color-purple;
+    
+        .a-logo {
+            width: 80px;
+            height: auto;
+        }
+    
+        div {
+            button {
+                text-decoration: none;
+                background-color: $color-purple;
+                border: none;
+                position: absolute;
+                right: 10px;
+                top: 20px;
+                margin-bottom: 20px;
+    
+                img {
+                    width: 40px;
+                    height: auto;
+                }
+            }
+        }
+    }
+    .nav-links {
+    
+        padding-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: $color-purple;
+
+        a {
+            text-decoration: none;
+            color: $color-yellow;
+            font-family: $athelas;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+    }
+}

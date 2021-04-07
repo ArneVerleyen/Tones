@@ -1,0 +1,58 @@
+@import '../../app.scss';
+*{
+    background-color: $color-purple;
+}
+.home-container{
+    background-color: $color-purple;
+    text-align: center;
+
+    div{
+        padding-top: 10px;
+        text-align: center;
+        padding-bottom: 40px;
+        h1{
+            color: $color-yellow;
+            font-family: $athelas;
+            font-size: 36px;
+            font-weight: 300;
+        }
+        p{
+            color: $color-yellow;
+            font-family: $aller;
+            font-size: 16px;
+            padding: 15px;
+            font-weight: 300;
+        }
+    }
+    a{
+        text-decoration: none;
+        font-weight: 300;
+        color: $color-yellow;
+        font-family: $aller;
+        font-size: 16px;
+
+    }
+    .link-btn{
+        text-decoration: none;
+        font-weight: 300;
+        background-color: $color-deep-purple;
+        color: $color-yellow;
+        font-family: $athelas;
+        font-size: 24px;
+        padding: 10px 15px;
+        border-radius: 24px;
+        margin: 40px;
+    }
+    img{
+        margin-top: 40px;
+        width: 100vw;
+        height: auto;
+    }
+    p{
+        color: $color-yellow;
+        font-family: $aller;
+        font-size: 16px;
+        padding: 15px;
+        font-weight: 300;
+    }
+}

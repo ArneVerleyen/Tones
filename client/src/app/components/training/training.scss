@@ -1,0 +1,19 @@
+@import '../../app.scss';
+
+.training-container{
+    background-color: $color-purple;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    a{
+        color: $color-yellow;
+        text-decoration: none;
+        font-family: $athelas;
+        font-weight: 300;
+        padding: 20px 20vw;
+        border-radius: 25px;
+        font-size: 24px;
+        background-color: $color-deep-purple;
+    }
+}
