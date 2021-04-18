@@ -1,10 +1,9 @@
 {
-  "name": "new_media_development_men_boilerplate",
+  "name": "tones_server",
   "version": "1.0.0",
-  "description": "MEN Boilerplate with TypeScript",
+  "description": "Mern server for Tones with TypeScript",
   "main": "dist/index.js",
-  "repository": "https://github.com/gdmgent-1920-mobdev2/MERN-stack",
-  "author": "drdynscript",
+  "repository": "https://github.com/ArneVerleyen/Tones.git",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^4.0.1",
@@ -18,7 +17,7 @@
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
-    "mongoose": "^5.9.5",
+    "mongoose": "^5.12.3",
     "mongoose-paginate": "^5.0.3",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
@@ -30,8 +29,7 @@
     "slug": "^2.1.1",
     "swagger-express-ts": "^1.0.1",
     "swagger-jsdoc": "^3.5.0",
-    "swagger-ui-express": "^4.1.3",
-    "winston": "^3.2.1"
+    "swagger-ui-express": "^4.1.3"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
@@ -56,7 +54,6 @@
     "@types/slug": "^0.9.1",
     "@types/swagger-jsdoc": "^3.0.2",
     "@types/swagger-ui-express": "^4.1.1",
-    "@types/winston": "^2.4.4",
     "cpy-cli": "^3.1.0",
     "cross-env": "^7.0.2",
     "husky": "^4.2.3",
