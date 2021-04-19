@@ -88,23 +88,22 @@ const Intervals = () => {
 
         if (musicalInterval === 1) {
             // Interval = m3
-            referenceNote = 'C';
-            questionNote = 'Eb';
+            referenceNote = 'C4';
+            questionNote = 'Eb4';
         } else if (musicalInterval === 2) {
             // Interval = M3
-            referenceNote = 'C';
-            questionNote= 'E';
+            referenceNote = 'C4';
+            questionNote= 'E4';
         } else if (musicalInterval === 3) {
             // Interval = P5
-            referenceNote = 'C';
-            questionNote = 'G'
+            referenceNote = 'C4';
+            questionNote = 'G4'
         } else if (musicalInterval === 4) {
             // Interval = P8
-            referenceNote ='C';
-            questionNote = 'C';
+            referenceNote ='C4';
+            questionNote = 'C5';
         };
         
-
         Tone.start();
         const now = Tone.now();
         const synth = new Tone.Synth().toDestination();
@@ -115,8 +114,39 @@ const Intervals = () => {
     const minorThird = () => {
         if (musicalInterval === 1) {
             getRandomInterval();
+            handlePlay();
+            
         } else {
+            console.log('wrong')
+        }
+    }
 
+    const majorThird = () => {
+        if (musicalInterval === 2) {
+            getRandomInterval();
+            handlePlay();
+            
+        } else {
+            console.log('wrong')
+        }
+    }
+
+    const fifth = () => {
+        if (musicalInterval === 3) {
+            getRandomInterval();
+            handlePlay();
+            
+        } else {
+            console.log('wrong')
+        }
+    }
+
+    const octave = () => {
+        if (musicalInterval === 4) {
+            getRandomInterval();
+            handlePlay();
+        } else {
+            console.log('wrong')
         }
     }
 
@@ -143,18 +173,18 @@ const Intervals = () => {
             </div>
             <div className='answer-container'>
                 <div className='answer-row'>
-                    <div onClick={getRandomInterval}>
+                    <div onClick={minorThird}>
                         <p>Minor Third</p>
                     </div>
-                    <div>
+                    <div onClick={majorThird}>
                         <p>Major Third</p>
                     </div>
                 </div>
                 <div className='answer-row'>
-                    <div>
+                    <div onClick={fifth}>
                         <p>Fifth</p>
                     </div>
-                    <div>
+                    <div onClick={octave}>
                         <p>Octave</p>
                     </div>
                 </div>
