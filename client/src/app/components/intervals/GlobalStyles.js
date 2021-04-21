@@ -1,8 +1,12 @@
-/*@import '../../app.scss';
+import {createGlobalStyle} from 'styled-components';
+
+export const GlobalStyles = createGlobalStyle`
+
 *{
-    background-color: $color-purple;
-    color: $color-yellow;
-    font-family: $titles;
+    background: ${({theme})=> theme.body};
+    color: #FFB94E;
+    font-family: baskerville-urw, serif;
+    transition: all 0.1s linear;
 }
 .intervals-container{
     display: flex;
@@ -13,7 +17,7 @@
         justify-content: space-around;
         margin: 4px 0;
         div{
-            background-color: $color-deep-purple;
+            background-color: #470047;
             width: 42vw;
             margin: 0 5px;
         }
@@ -22,10 +26,10 @@
             width: 47vw;
             padding: 1.2vh 0vw;
             text-align: center;
-            background-color: $color-deep-purple;
+            background-color: #470047;
             border-radius: 24px;
             h3{
-                background-color: $color-deep-purple;
+                background-color: #470047;
                 font-size: 24px;
                 width: 42vw;
                 margin: 0 5px;
@@ -34,7 +38,7 @@
             }
             img{
           
-                background-color: $color-deep-purple;
+                background-color: #470047;
             }
         }
     }
@@ -44,7 +48,7 @@
         text-decoration: none;
         width: 84vw;
         padding: 20px;
-        background-color: $color-deep-purple;
+        background-color: #470047;
         display: flex;
         justify-content: center;
         border-radius: 24px;
@@ -53,10 +57,10 @@
             // color: white;
             font-weight: 300;
             margin-right: 20px;
-            background-color: $color-deep-purple;
+            background-color: #470047;
         }
         img{
-            background-color: $color-deep-purple;
+            background-color: #470047;
         }
     }
 
@@ -70,11 +74,11 @@
                 margin: 0 2px;
                 height: 12vh;
                 width: 47vw;
-                background-color: $color-deep-purple;
+                background-color: #470047;
                 border-radius: 24px;
                 p{
                     margin: 4vh 0 0 12px;
-                    background-color: $color-deep-purple;
+                    background-color: #470047;
                     font-size: 18px;
                     // color: white;
                     font-weight: 300;
@@ -95,7 +99,7 @@
             justify-content: space-around;
             margin: 4px 0;
             div{
-                background-color: $color-deep-purple;
+                background-color: #470047;
                 width: 260px;
                 margin: 0 5px;
             }
@@ -104,10 +108,10 @@
                 width: 280px;
                 padding: 1.2vh 0vw;
                 text-align: center;
-                background-color: $color-deep-purple;
+                background-color: #470047;
                 border-radius: 24px;
                 h3{
-                    background-color: $color-deep-purple;
+                    background-color: #470047;
                     font-size: 24px;
                     width: 260px;
                     margin: 0 5px;
@@ -116,7 +120,7 @@
                 }
                 img{
               
-                    background-color: $color-deep-purple;
+                    background-color: #470047;
                 }
             }
         }
@@ -126,7 +130,7 @@
             text-decoration: none;
             width: 525px;
             padding: 20px;
-            background-color: $color-deep-purple;
+            background-color: #470047;
             display: flex;
             justify-content: center;
             border-radius: 24px;
@@ -135,10 +139,10 @@
                 // color: white;
                 font-weight: 300;
                 margin-right: 20px;
-                background-color: $color-deep-purple;
+                background-color: #470047;
             }
             img{
-                background-color: $color-deep-purple;
+                background-color: #470047;
             }
         }
     
@@ -152,11 +156,11 @@
                     margin: 0 2px;
                     height: 12vh;
                     width: 280px;
-                    background-color: $color-deep-purple;
+                    background-color: #470047;
                     border-radius: 24px;
                     p{
                         margin: 4vh 0 0 12px;
-                        background-color: $color-deep-purple;
+                        background-color: #470047;
                         font-size: 18px;
                         // color: white;
                         font-weight: 300;
@@ -168,3 +172,4 @@
     }
     
 }
+`;

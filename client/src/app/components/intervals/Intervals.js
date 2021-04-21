@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import './intervals.scss';
+import React, { useCallback, useEffect, useState } from 'react';
+// import './intervals.scss';
 import * as Tone from 'tone';
 // import  {StartAudioContext} from 'startaudiocontext';
 import play from '../../_static/icons/play.svg';
 import soundIcon from '../../_static/icons/sound-icon.svg';
+import {wrongTheme, rightTheme, normalTheme} from './themes';
+import {ThemeProvider} from 'styled-components';
+import {GlobalStyles} from './GlobalStyles'
 
 const Intervals = () => {
 
     const [musicalInterval, setMusicalInterval ] = useState(0);
- 
+    const [background, setBackground] = useState(normalTheme);
+
     const getRandomInterval = () => {
 
         // const random = Math.floor((Math.random() * 13) + 1);
@@ -73,7 +77,7 @@ const Intervals = () => {
         };
 
         */
-        // return [referenceNote, questionNote]
+        return random;
     };
 
     if (musicalInterval === 0)
@@ -81,7 +85,11 @@ const Intervals = () => {
         getRandomInterval();
     }
 
-    const handlePlay = () => {
+    const getNormalBackground = useCallback(() => {
+        setBackground(normalTheme);
+    },[]);
+    
+    const handlePlay = useCallback( () => {
 
         let referenceNote;
         let questionNote;
@@ -109,87 +117,96 @@ const Intervals = () => {
         const synth = new Tone.Synth().toDestination();
         synth.triggerAttackRelease(referenceNote, "4n", now);
         synth.triggerAttackRelease(questionNote, "2n", now + 0.5);
-    }
+    }, [musicalInterval])
+
+    useEffect(() => {
+        handlePlay();
+    }, [musicalInterval, handlePlay])
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {getNormalBackground()}, 1000)
+        
+    }, [background, getNormalBackground])
 
     const minorThird = () => {
         if (musicalInterval === 1) {
             getRandomInterval();
-            handlePlay();
-            
+            setBackground(rightTheme);
         } else {
-            console.log('wrong')
+            setBackground(wrongTheme);
         }
     }
 
     const majorThird = () => {
         if (musicalInterval === 2) {
             getRandomInterval();
-            handlePlay();
-            
+            setBackground(rightTheme);
         } else {
-            console.log('wrong')
+            setBackground(wrongTheme);
         }
     }
 
     const fifth = () => {
         if (musicalInterval === 3) {
             getRandomInterval();
-            handlePlay();
-            
+            setBackground(rightTheme);
         } else {
-            console.log('wrong')
+            setBackground(wrongTheme);
         }
     }
 
     const octave = () => {
         if (musicalInterval === 4) {
             getRandomInterval();
-            handlePlay();
+            setBackground(rightTheme);
         } else {
-            console.log('wrong')
+            setBackground(wrongTheme);
         }
     }
 
 
     return  (
-        <div className='intervals-container wrong'>
-            <div className='played-notes'>
-                <div className='played-note' >
-                    <h3>Reference note</h3>
-                    <div>
-                        <img src={soundIcon} alt='Sound icon' />
+        <ThemeProvider theme={background}>
+            <GlobalStyles/>
+            <div className='intervals-container wrong'>
+                <div className='played-notes'>
+                    <div className='played-note' >
+                        <h3>Reference note</h3>
+                        <div>
+                            <img src={soundIcon} alt='Sound icon' />
+                        </div>
+                    </div>
+                    <div className='played-note'>
+                        <h3>Question note</h3>
+                        <div>
+                            <img src={soundIcon} alt='Sound icon' />
+                        </div>
                     </div>
                 </div>
-                <div className='played-note'>
-                    <h3>Question note</h3>
-                    <div>
-                        <img src={soundIcon} alt='Sound icon' />
+                <div className='play' onClick={handlePlay}>
+                    <p>Play interval</p>
+                    <img src={play} alt='playbutton' />
+                </div>
+                <div className='answer-container'>
+                    <div className='answer-row'>
+                        <div onClick={minorThird}>
+                            <p>Minor Third</p>
+                        </div>
+                        <div onClick={majorThird}>
+                            <p>Major Third</p>
+                        </div>
+                    </div>
+                    <div className='answer-row'>
+                        <div onClick={fifth}>
+                            <p>Fifth</p>
+                        </div>
+                        <div onClick={octave}>
+                            <p>Octave</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className='play' onClick={handlePlay}>
-                <p>Play interval</p>
-                <img src={play} alt='playbutton' />
-            </div>
-            <div className='answer-container'>
-                <div className='answer-row'>
-                    <div onClick={minorThird}>
-                        <p>Minor Third</p>
-                    </div>
-                    <div onClick={majorThird}>
-                        <p>Major Third</p>
-                    </div>
-                </div>
-                <div className='answer-row'>
-                    <div onClick={fifth}>
-                        <p>Fifth</p>
-                    </div>
-                    <div onClick={octave}>
-                        <p>Octave</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </ThemeProvider>
     );
 };
 
