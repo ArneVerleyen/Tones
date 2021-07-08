@@ -1,5 +1,6 @@
 @import '../../app.scss';
 .header-container{
+    background-color: $color-purple;
     .header-inner-container {
         display: flex;
         justify-content: space-between;

@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     color: #FFB94E;
     font-family: baskerville-urw, serif;
     transition: all 0.1s linear;
+    touch-action:manipulation;
 }
 .intervals-container{
     display: flex;

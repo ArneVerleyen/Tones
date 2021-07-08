@@ -16,7 +16,7 @@ const Home = () => {
                     enthousiasts that want to train their hearing. By following our training path 
                     you'll awaken your hearing and learn to play by ear rather than by repeating scales.
                 </p>
-                <a href='#read-more' >learn more...</a>
+                <a href='#read-more'>learn more...</a>
             </div>
             <Link to={Routes.TRAINING} className='link-btn' >Start training</Link>
             <img src={banner} alt='Tones banner' />

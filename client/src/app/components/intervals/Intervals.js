@@ -124,8 +124,8 @@ const Intervals = () => {
     }, [musicalInterval, handlePlay])
 
     useEffect(() => {
-        const timeout = setTimeout(() => {getNormalBackground()}, 1000)
-        
+        const timeout = setTimeout(() => {getNormalBackground()}, 1000);
+        console.log(timeout);
     }, [background, getNormalBackground])
 
     const minorThird = () => {

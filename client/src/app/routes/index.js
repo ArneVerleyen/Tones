@@ -3,6 +3,7 @@ export const LANDING = '/';
 
 export const TRAINING = '/training';
 export const INTERVALS = '/intervals';
+export const INTERVAL_SETTINGS = '/intervals/settings';
 
 export const CONTACT = '/contact';
 

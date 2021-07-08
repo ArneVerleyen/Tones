@@ -1,0 +1,54 @@
+@import '../../app.scss';
+
+.interval-settings-container {
+    background-color: $color-purple;
+    .row {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 15px;
+        div {
+            background-color: $color-deep-purple;
+            border-radius: 24px;
+            padding: 20px;
+            width: 30vw;
+            text-align: center;
+            p {
+                font-size: 16px;
+                background-color: inherit;
+                color: $color-yellow;
+                font-family: $titles;
+            }
+        }
+    }
+
+    .select {
+        text-align: center;
+        select {
+            font-size: 16px;
+            background-color: inherit;
+            color: $color-yellow;
+            font-family: $titles;
+            border: none;
+            background-color: $color-deep-purple;
+            padding: 20px;
+            border-radius: 24px;
+            width: 91vw;
+        }
+    }
+
+    .link {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        h3 {
+            background-color: $color-deep-purple;
+            padding: 20px 0px;
+            color: $color-yellow;
+            font-size: 16px;
+            font-family: $titles;
+            width: 91vw;
+            border-radius: 24px;
+        }
+    }
+}

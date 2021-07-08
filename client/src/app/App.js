@@ -11,6 +11,7 @@ import {
     IntervalsPage,
     LoginPage,
     RegisterPage,
+    IntervalSettingsPage,
 } from './pages';
 
 import * as Routes from './routes';
@@ -27,7 +28,9 @@ function App() {
                 <RouteWithLayout exact path = {Routes.HOME} component = {HomePage} layout = {PageLayOut} />
 
                 <RouteWithLayout exact path = {Routes.TRAINING} component = {TrainingPage} layout = {PageLayOut} />
+                
                 <RouteWithLayout exact path = {Routes.INTERVALS} component = {IntervalsPage} layout = {PageLayOut} />
+                <RouteWithLayout exact path = {Routes.INTERVAL_SETTINGS} component = {IntervalSettingsPage} layout = {PageLayOut} />
 
                 <RouteWithLayout exact path = {Routes.AUTH_SIGN_IN} component = {LoginPage} layout = {PageLayOut} />
                 <RouteWithLayout exact path = {Routes.AUTH_SIGN_UP} component = {RegisterPage} layout = {PageLayOut} />
