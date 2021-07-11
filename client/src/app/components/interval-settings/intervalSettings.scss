@@ -2,20 +2,35 @@
 
 .interval-settings-container {
     background-color: $color-purple;
+    margin-bottom: 40px;
     .row {
         display: flex;
-        justify-content: space-around;
-        margin-bottom: 15px;
+        justify-content: space-between;
+        margin: 0 10px 10px 15px;
         div {
             background-color: $color-deep-purple;
             border-radius: 24px;
             padding: 20px;
-            width: 30vw;
+            width: 35vw;
             text-align: center;
             p {
                 font-size: 16px;
                 background-color: inherit;
                 color: $color-yellow;
+                font-family: $titles;
+            }
+        }
+
+        .active {
+            background-color: $color-yellow;
+            border-radius: 24px;
+            padding: 20px;
+            width: 35vw;
+            text-align: center;
+            p {
+                font-size: 16px;
+                background-color: inherit;
+                color: $color-deep-purple;
                 font-family: $titles;
             }
         }
@@ -49,6 +64,36 @@
             font-family: $titles;
             width: 91vw;
             border-radius: 24px;
+        }
+    }
+
+    .error {
+        display: flex;
+        justify-content: center;
+        
+        div {
+            display: flex;
+            justify-content: space-between;
+            align-self: center;
+            align-items: center;
+    
+            margin: 15px 0;
+            background-color: $color-yellow; 
+            width: 91vw;
+            border-radius: 24px;
+            padding: 20px 0px;
+            svg {
+                margin-left: 10px;
+                background-color: $color-yellow;  
+            }
+            p {
+                margin-right: 10px;
+                text-align: center;
+                background-color: $color-yellow; 
+                color: $color-deep-purple;
+                font-size: 16px;
+                font-family: $titles;
+            }
         }
     }
 }

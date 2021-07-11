@@ -1,10 +1,11 @@
 @import '../../app.scss';
 .header-container{
-    background-color: $color-purple;
+    background-color: inherit;
     .header-inner-container {
         display: flex;
         justify-content: space-between;
         background-color: inherit;
+        margin: 0 10px;
     
         .a-logo {
             width: 100px;
