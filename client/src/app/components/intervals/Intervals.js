@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 // import './intervals.scss';
 import * as Tone from 'tone';
 // import  {StartAudioContext} from 'startaudiocontext';
@@ -10,127 +10,150 @@ import {GlobalStyles} from './GlobalStyles'
 
 const Intervals = () => {
 
-    const [musicalInterval, setMusicalInterval ] = useState(0);
+    const [ musicalInterval, setMusicalInterval ] = useState(0);
+    const [ intervalOctave, setIntervalOctave ] = useState(4);  
+    const [ tone, setTone ] = useState(1);
     const [background, setBackground] = useState(normalTheme);
 
+    let settings = JSON.parse(localStorage.getItem('settings'));
+
+    // Use memo hook so array doesn't reredener because of useCallback hook dependency
+    let practiseIntervals = useMemo(() => {
+        const getPractiseIntervals = () => {
+            let practiseIntervals = [];
+            if (settings.m2) {practiseIntervals.push('m2')};
+            if (settings.M2) {practiseIntervals.push('M2')};
+            if (settings.m3) {practiseIntervals.push('m3')};
+            if (settings.M3) {practiseIntervals.push('M3')};
+            if (settings.P4) {practiseIntervals.push('P4')};
+            if (settings.tritone) {practiseIntervals.push('tritone')};
+            if (settings.P5) {practiseIntervals.push('P5')};
+            if (settings.m6) {practiseIntervals.push('m6')};
+            if (settings.M6) {practiseIntervals.push('M6')};
+            if (settings.m7) {practiseIntervals.push('m7')};
+            if (settings.M7) {practiseIntervals.push('M7')};
+            if (settings.P8) {practiseIntervals.push('P8')};
+    
+            return practiseIntervals;
+        }
+        return getPractiseIntervals();
+    }, [settings.M2, settings.M3, settings.M6, settings.M7, settings.P4, settings.P5, settings.P8, settings.m2, settings.m3, settings.m6, settings.m7, settings.tritone]);
+
+    let practiseIntervalsLength = practiseIntervals.length;
+
     const getRandomInterval = () => {
-
-        // const random = Math.floor((Math.random() * 13) + 1);
-        const random = Math.floor((Math.random() * 4) + 1);
-        console.log(random);
+        const random = Math.floor((Math.random() * practiseIntervalsLength) + 1);
         setMusicalInterval(random);
-
-        /*
-
-        if (random === 1) {
-            // Interval = m2
-            referenceNote = 'C';
-            questionNote = 'Db';
-        } else if (random === 2) {
-            // Interval = M2
-            referenceNote = 'C';
-            questionNote= 'D';
-        } else if (random === 3) {
-            // Interval = m3
-            referenceNote = 'C';
-            questionNote = 'Eb'
-        } else if (random === 4) {
-            // Interval = M3
-            referenceNote ='C';
-            questionNote = 'E';
-        } else if (random === 5) {
-            // Interval P4
-            referenceNote = 'C';
-            questionNote = 'F';
-        } else if (random === 6) {
-            // Interval A4
-            referenceNote ='C';
-            questionNote = 'F#'
-        } else if (random === 7) {
-            // Interval = d5
-            referenceNote = 'C';
-            questionNote= 'Gb';
-        } else if (random === 8) {
-            // Interval = P5
-            referenceNote = 'C';
-            questionNote = 'G'
-        } else if (random === 9) {
-            // Interval = m6
-            referenceNote ='C';
-            questionNote = 'Ab';
-        } else if (random === 10) {
-            // Interval M6
-            referenceNote = 'C';
-            questionNote = 'A';
-        } else if (random === 11) {
-            // Interval m7
-            referenceNote ='C';
-            questionNote = 'Bb'
-        } else if (random === 12) {
-            // Interval M7
-            referenceNote = 'C';
-            questionNote = 'B';
-        } else if (random === 13) {
-            // Interval P8
-            referenceNote ='C';
-            questionNote = 'C'
-        };
-
-        */
-        return random;
     };
 
-    if (musicalInterval === 0)
-    {
+    const getRandomTone = () => {
+        const random = Math.floor((Math.random() * 12) + 1);
+        setTone(random);
+    };
+
+    const getRandomOctave = () => {
+        const random = Math.floor((Math.random() * 8) + 1);
+        setIntervalOctave(random);
+    };
+
+    if (musicalInterval === 0) {
         getRandomInterval();
-    }
+        getRandomTone();
+        getRandomOctave();
+    };
 
     const getNormalBackground = useCallback(() => {
         setBackground(normalTheme);
     },[]);
     
-    const handlePlay = useCallback( () => {
+    const handlePlay = useCallback(() => {
+
+        // array containing all intervals for each note (without accounting for octaves).
+
+        const allIntervals = [
+            ['C', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C'],
+            ['Db', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db'],
+            ['D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D'],
+            ['Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb'],
+            ['E', 'F', 'F#', 'G', 'Ab', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E'],
+            ['F', 'F#', 'G', 'Ab', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F'],
+            ['Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb'],
+            ['G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G'],
+            ['Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab'],
+            ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A'],
+            ['Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb'],
+            ['B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
+        ];
 
         let referenceNote;
         let questionNote;
 
-        if (musicalInterval === 1) {
-            // Interval = m3
-            referenceNote = 'C4';
-            questionNote = 'Eb4';
-        } else if (musicalInterval === 2) {
-            // Interval = M3
-            referenceNote = 'C4';
-            questionNote= 'E4';
-        } else if (musicalInterval === 3) {
-            // Interval = P5
-            referenceNote = 'C4';
-            questionNote = 'G4'
-        } else if (musicalInterval === 4) {
-            // Interval = P8
-            referenceNote ='C4';
-            questionNote = 'C5';
-        };
+        referenceNote = allIntervals[tone - 1][0] + intervalOctave.toString();
+
+        // Nog alle 
+
+        if (practiseIntervals[musicalInterval - 1] === 'm2') {
+            console.log('elo m2');
+            questionNote = allIntervals[tone - 1][1] + intervalOctave.toString();
+        } else if (practiseIntervals[musicalInterval - 1] === 'M2') {
+            console.log('elo M2');
+            questionNote = allIntervals[tone - 1][2] + intervalOctave.toString();
+        } else if (practiseIntervals[musicalInterval - 1] === 'm3') {
+            console.log('elo m3');
+            questionNote = allIntervals[tone - 1][3] + intervalOctave.toString();
+        } else if (practiseIntervals[musicalInterval - 1] === 'M3') {
+            console.log('elo M3');
+            questionNote = allIntervals[tone - 1][4] + intervalOctave.toString();
+        } else if (practiseIntervals[musicalInterval - 1] === 'P4') {
+            console.log('elo P4');
+            questionNote = allIntervals[tone - 1][5] + intervalOctave.toString();
+        } else if (practiseIntervals[musicalInterval - 1] === 'tritone') {
+            console.log('elo P8');
+            questionNote = allIntervals[tone - 1][6] + intervalOctave.toString();
+        } else if (practiseIntervals[musicalInterval - 1] === 'P5') {
+            console.log('elo P5');
+            questionNote = allIntervals[tone - 1][7] + intervalOctave.toString();
+        } else if (practiseIntervals[musicalInterval - 1] === 'm6') {
+            console.log('elo m6');
+            questionNote = allIntervals[tone - 1][8] + intervalOctave.toString();
+        } else if (practiseIntervals[musicalInterval - 1] === 'M6') {
+            console.log('elo M6');
+            questionNote = allIntervals[tone - 1][9] + intervalOctave.toString();
+        } else if (practiseIntervals[musicalInterval - 1] === 'm7') {
+            console.log('elo m7');
+            questionNote = allIntervals[tone - 1][10] + intervalOctave.toString();
+        } else if (practiseIntervals[musicalInterval - 1] === 'M7') {
+            console.log('elo M7');
+            questionNote = allIntervals[tone - 1][11] + intervalOctave.toString();
+        } else if (practiseIntervals[musicalInterval - 1] === 'P8') {
+            console.log('elo P8');
+            questionNote = allIntervals[tone][12] + intervalOctave.toString();
+        } ; 
+
+        console.log(referenceNote);
+
+        console.log(practiseIntervals);
         
         Tone.start();
         const now = Tone.now();
         const synth = new Tone.Synth().toDestination();
         synth.triggerAttackRelease(referenceNote, "4n", now);
         synth.triggerAttackRelease(questionNote, "2n", now + 0.5);
-    }, [musicalInterval])
+    }, [ intervalOctave, musicalInterval, practiseIntervals, tone])
 
     useEffect(() => {
         handlePlay();
     }, [musicalInterval, handlePlay])
 
     useEffect(() => {
-        const timeout = setTimeout(() => {getNormalBackground()}, 1000);
-        console.log(timeout);
+        setTimeout(() => {getNormalBackground()}, 1000);
     }, [background, getNormalBackground])
 
     const minorThird = () => {
         if (musicalInterval === 1) {
             getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
             setBackground(rightTheme);
         } else {
             setBackground(wrongTheme);
@@ -140,6 +163,8 @@ const Intervals = () => {
     const majorThird = () => {
         if (musicalInterval === 2) {
             getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
             setBackground(rightTheme);
         } else {
             setBackground(wrongTheme);
@@ -149,6 +174,8 @@ const Intervals = () => {
     const fifth = () => {
         if (musicalInterval === 3) {
             getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
             setBackground(rightTheme);
         } else {
             setBackground(wrongTheme);
@@ -158,6 +185,8 @@ const Intervals = () => {
     const octave = () => {
         if (musicalInterval === 4) {
             getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
             setBackground(rightTheme);
         } else {
             setBackground(wrongTheme);
