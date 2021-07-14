@@ -13,6 +13,7 @@ const Intervals = () => {
     const [ musicalInterval, setMusicalInterval ] = useState(0);
     const [ intervalOctave, setIntervalOctave ] = useState(4);  
     const [ tone, setTone ] = useState(1);
+    const [ answers, setAnswers ] = useState({right: 0, wrong: 0});
     const [background, setBackground] = useState(normalTheme);
 
     let settings = JSON.parse(localStorage.getItem('settings'));
@@ -52,8 +53,9 @@ const Intervals = () => {
     };
 
     const getRandomOctave = () => {
-        const random = Math.floor((Math.random() * 8) + 1);
+        const random = Math.floor((Math.random() * 4) + 2);
         setIntervalOctave(random);
+        console.log(random);
     };
 
     if (musicalInterval === 0) {
@@ -90,50 +92,85 @@ const Intervals = () => {
 
         referenceNote = allIntervals[tone - 1][0] + intervalOctave.toString();
 
-        // Nog alle 
+        // Calculate correct interval from reference note.
 
         if (practiseIntervals[musicalInterval - 1] === 'm2') {
-            console.log('elo m2');
+            console.log('m2');
             questionNote = allIntervals[tone - 1][1] + intervalOctave.toString();
+            if (allIntervals[tone - 1][0] === 'B') {
+                questionNote = allIntervals[tone - 1][1] + (intervalOctave + 1).toString();
+            };
         } else if (practiseIntervals[musicalInterval - 1] === 'M2') {
-            console.log('elo M2');
+            console.log('M2');
             questionNote = allIntervals[tone - 1][2] + intervalOctave.toString();
+            if (allIntervals[tone - 1][0] === 'B'|| allIntervals[tone - 1][0] === 'Bb') {
+                questionNote = allIntervals[tone - 1][2] + (intervalOctave + 1).toString();
+            };
         } else if (practiseIntervals[musicalInterval - 1] === 'm3') {
-            console.log('elo m3');
+            console.log('m3');
             questionNote = allIntervals[tone - 1][3] + intervalOctave.toString();
+            if (allIntervals[tone - 1][0] === 'B'|| allIntervals[tone - 1][0] === 'Bb' || allIntervals[tone - 1][0] === 'A') {
+                questionNote = allIntervals[tone - 1][3] + (intervalOctave + 1).toString();
+            };
         } else if (practiseIntervals[musicalInterval - 1] === 'M3') {
-            console.log('elo M3');
+            console.log('M3');
             questionNote = allIntervals[tone - 1][4] + intervalOctave.toString();
+            if (allIntervals[tone - 1][0] === 'B'|| allIntervals[tone - 1][0] === 'Bb' || allIntervals[tone - 1][0] === 'A' || allIntervals[tone - 1][0] === 'Ab') {
+                questionNote = allIntervals[tone - 1][4] + (intervalOctave + 1).toString();
+            };
         } else if (practiseIntervals[musicalInterval - 1] === 'P4') {
-            console.log('elo P4');
+            console.log('P4');
             questionNote = allIntervals[tone - 1][5] + intervalOctave.toString();
+            if (allIntervals[tone - 1][0] === 'B'|| allIntervals[tone - 1][0] === 'Bb' || allIntervals[tone - 1][0] === 'A' || allIntervals[tone - 1][0] === 'Ab' || allIntervals[tone - 1][0] === 'G') {
+                questionNote = allIntervals[tone - 1][5] + (intervalOctave + 1).toString();
+            };
         } else if (practiseIntervals[musicalInterval - 1] === 'tritone') {
-            console.log('elo P8');
+            console.log('tritone');
             questionNote = allIntervals[tone - 1][6] + intervalOctave.toString();
+            if (allIntervals[tone - 1][0] === 'B'|| allIntervals[tone - 1][0] === 'Bb' || allIntervals[tone - 1][0] === 'A' || allIntervals[tone - 1][0] === 'Ab' || allIntervals[tone - 1][0] === 'G' || allIntervals[tone - 1][0] === 'Gb') {
+                questionNote = allIntervals[tone - 1][6] + (intervalOctave + 1).toString();
+            };
         } else if (practiseIntervals[musicalInterval - 1] === 'P5') {
-            console.log('elo P5');
+            console.log('P5');
             questionNote = allIntervals[tone - 1][7] + intervalOctave.toString();
+            if (allIntervals[tone - 1][0] === 'B'|| allIntervals[tone - 1][0] === 'Bb' || allIntervals[tone - 1][0] === 'A' || allIntervals[tone - 1][0] === 'Ab' || allIntervals[tone - 1][0] === 'G' || allIntervals[tone - 1][0] === 'Gb' || allIntervals[tone - 1][0] === 'F') {
+                questionNote = allIntervals[tone - 1][7] + (intervalOctave + 1).toString();
+            };
         } else if (practiseIntervals[musicalInterval - 1] === 'm6') {
-            console.log('elo m6');
+            console.log('m6');
             questionNote = allIntervals[tone - 1][8] + intervalOctave.toString();
+            if (allIntervals[tone - 1][0] === 'B'|| allIntervals[tone - 1][0] === 'Bb' || allIntervals[tone - 1][0] === 'A' || allIntervals[tone - 1][0] === 'Ab' || allIntervals[tone - 1][0] === 'G' || allIntervals[tone - 1][0] === 'Gb' || allIntervals[tone - 1][0] === 'F' || allIntervals[tone - 1][0] === 'E') {
+                questionNote = allIntervals[tone - 1][8] + (intervalOctave + 1).toString();
+            };
         } else if (practiseIntervals[musicalInterval - 1] === 'M6') {
-            console.log('elo M6');
+            console.log('M6');
             questionNote = allIntervals[tone - 1][9] + intervalOctave.toString();
+            if (allIntervals[tone - 1][0] === 'B'|| allIntervals[tone - 1][0] === 'Bb' || allIntervals[tone - 1][0] === 'A' || allIntervals[tone - 1][0] === 'Ab' || allIntervals[tone - 1][0] === 'G' || allIntervals[tone - 1][0] === 'Gb' || allIntervals[tone - 1][0] === 'F' || allIntervals[tone - 1][0] === 'E' || allIntervals[tone - 1][0] === 'Eb') {
+                questionNote = allIntervals[tone - 1][9] + (intervalOctave + 1).toString();
+            };
         } else if (practiseIntervals[musicalInterval - 1] === 'm7') {
-            console.log('elo m7');
+            console.log('m7');
             questionNote = allIntervals[tone - 1][10] + intervalOctave.toString();
+            if (allIntervals[tone - 1][0] === 'B'|| allIntervals[tone - 1][0] === 'Bb' || allIntervals[tone - 1][0] === 'A' || allIntervals[tone - 1][0] === 'Ab' || allIntervals[tone - 1][0] === 'G' || allIntervals[tone - 1][0] === 'Gb' || allIntervals[tone - 1][0] === 'F' || allIntervals[tone - 1][0] === 'E' || allIntervals[tone - 1][0] === 'Eb' || allIntervals[tone - 1][0] === 'D') {
+                questionNote = allIntervals[tone - 1][10] + (intervalOctave + 1).toString();
+            };
         } else if (practiseIntervals[musicalInterval - 1] === 'M7') {
-            console.log('elo M7');
+            console.log('M7');
             questionNote = allIntervals[tone - 1][11] + intervalOctave.toString();
+            if (allIntervals[tone - 1][0] === 'B'|| allIntervals[tone - 1][0] === 'Bb' || allIntervals[tone - 1][0] === 'A' || allIntervals[tone - 1][0] === 'Ab' || allIntervals[tone - 1][0] === 'G' || allIntervals[tone - 1][0] === 'Gb' || allIntervals[tone - 1][0] === 'F' || allIntervals[tone - 1][0] === 'E' || allIntervals[tone - 1][0] === 'Eb' || allIntervals[tone - 1][0] === 'D' || allIntervals[tone - 1][0] === 'Db') {
+                questionNote = allIntervals[tone - 1][11] + (intervalOctave + 1).toString();
+            };
         } else if (practiseIntervals[musicalInterval - 1] === 'P8') {
-            console.log('elo P8');
-            questionNote = allIntervals[tone][12] + intervalOctave.toString();
+            console.log('P8');
+            questionNote = allIntervals[tone - 1][0] + (intervalOctave + 1).toString();
+            referenceNote = allIntervals[tone -1][0] + intervalOctave.toString();
         } ; 
 
         console.log(referenceNote);
+        console.log(questionNote);
 
-        console.log(practiseIntervals);
-        
+        // console.log(answers);
+
         Tone.start();
         const now = Tone.now();
         const synth = new Tone.Synth().toDestination();
@@ -147,51 +184,192 @@ const Intervals = () => {
 
     useEffect(() => {
         setTimeout(() => {getNormalBackground()}, 1000);
-    }, [background, getNormalBackground])
+    }, [background, getNormalBackground]);
+
+    // Functions that check if interval is correct.
+
+    const minorSecond = () => {
+        if (practiseIntervals[musicalInterval - 1] === 'm2') {
+            getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
+            setBackground(rightTheme);
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
+        } else {
+            setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
+        }
+    };
+
+    const majorSecond = () => {
+        if (practiseIntervals[musicalInterval - 1] === 'M2') {
+            getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
+            setBackground(rightTheme);
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
+        } else {
+            setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
+        }
+    };
 
     const minorThird = () => {
-        if (musicalInterval === 1) {
+        if (practiseIntervals[musicalInterval - 1] === 'm3') {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
             setBackground(rightTheme);
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
         } else {
             setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
         }
-    }
+    };
 
     const majorThird = () => {
-        if (musicalInterval === 2) {
+        console.log(answers)
+        if (practiseIntervals[musicalInterval - 1] === 'M3') {
+            getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
+            setBackground(rightTheme);
+        } else {
+            setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
+        }
+    };
+
+    const perfectFourth = () => {
+        if (practiseIntervals[musicalInterval - 1] === 'P4') {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
             setBackground(rightTheme);
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
         } else {
             setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
         }
-    }
+    };
+
+    const tritone = () => {
+        if (practiseIntervals[musicalInterval - 1] === 'tritone') {
+            getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
+            setBackground(rightTheme);
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
+        } else {
+            setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
+        }
+    };
 
     const fifth = () => {
-        if (musicalInterval === 3) {
+        if (practiseIntervals[musicalInterval - 1] === 'P5') {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
             setBackground(rightTheme);
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
         } else {
             setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
         }
-    }
+    };
+
+    const minorSixth = () => {
+        if (practiseIntervals[musicalInterval - 1] === 'm6') {
+            getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
+            setBackground(rightTheme);
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
+        } else {
+            setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
+        }
+    };
+
+    const majorSixth = () => {
+        if (practiseIntervals[musicalInterval - 1] === 'M6') {
+            getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
+            setBackground(rightTheme);
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
+        } else {
+            setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
+        }
+    };
+
+    const minorSeventh = () => {
+        if (practiseIntervals[musicalInterval - 1] === 'm7') {
+            getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
+            setBackground(rightTheme);
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
+        } else {
+            setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
+        }
+    };
+
+    const majorSeventh = () => {
+        if (practiseIntervals[musicalInterval - 1] === 'M7') {
+            getRandomInterval();
+            getRandomTone();
+            getRandomOctave();
+            setBackground(rightTheme);
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
+        } else {
+            setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
+        }
+    };
 
     const octave = () => {
-        if (musicalInterval === 4) {
+        if (practiseIntervals[musicalInterval - 1] === 'P8') {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
             setBackground(rightTheme);
+            const rightAnswer =  answers.right + 1;
+            setAnswers({right: rightAnswer, wrong: answers.wrong});
         } else {
             setBackground(wrongTheme);
+            const wrongAnswer =  answers.wrong + 1;
+            setAnswers({right: answers.right, wrong: wrongAnswer});
         }
-    }
+    };
+
+    //@ TODO: Counter weergeven in balk op het scherm juist/fout
 
 
     return  (
@@ -217,22 +395,79 @@ const Intervals = () => {
                     <img src={play} alt='playbutton' />
                 </div>
                 <div className='answer-container'>
-                    <div className='answer-row'>
+                    {
+                        settings.m2 &&
+                        <div onClick={minorSecond}>
+                            <p>Minor Second</p>
+                        </div>
+                    }
+
+                    {
+                        settings.M2 &&
+                        <div onClick={majorSecond}>
+                            <p>Major Second</p>
+                        </div>
+                    }
+                    {
+                        settings.m3 &&
                         <div onClick={minorThird}>
                             <p>Minor Third</p>
                         </div>
+                    }
+                    {
+                        settings.M3 &&
                         <div onClick={majorThird}>
                             <p>Major Third</p>
                         </div>
-                    </div>
-                    <div className='answer-row'>
-                        <div onClick={fifth}>
-                            <p>Fifth</p>
+                    }
+                    {
+                        settings.P4 &&
+                        <div onClick={perfectFourth}>
+                            <p>Perfect Fourth</p>
                         </div>
+                    }
+                    {
+                        settings.tritone &&
+                        <div onClick={tritone}>
+                            <p>Tritone</p>
+                        </div>
+                    }
+                    {
+                        settings.P5 &&
+                        <div onClick={fifth}>
+                            <p>Perfect Fifth</p>
+                        </div>
+                    }
+                    {
+                        settings.m6 &&
+                        <div onClick={minorSixth}>
+                            <p>Minor Sixth</p>
+                        </div>
+                    }
+                    {
+                        settings.M6 &&
+                        <div onClick={majorSixth}>
+                            <p>Major Sixth</p>
+                        </div>
+                    }
+                    {
+                        settings.m7 &&
+                        <div onClick={minorSeventh}>
+                            <p>Minor Seventh</p>
+                        </div>
+                    }
+                    {
+                        settings.M7 &&
+                        <div onClick={majorSeventh}>
+                            <p>Major Seventh</p>
+                        </div>
+                    }
+                    {
+                        settings.P8 &&
                         <div onClick={octave}>
                             <p>Octave</p>
                         </div>
-                    </div>
+                    } 
                 </div>
             </div>
         </ThemeProvider>

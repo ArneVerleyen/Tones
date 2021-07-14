@@ -47,7 +47,8 @@ export const GlobalStyles = createGlobalStyle`
     .play {
         border: none;
         text-decoration: none;
-        width: 84vw;
+        width: 85vw;
+        margin: 0 2px;
         padding: 20px;
         background-color: #470047;
         display: flex;
@@ -66,28 +67,29 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .answer-container {
-            .answer-row{
-            display: flex;
-            justify-content: space-around;
-            margin: 4px 0;
-            div{
-                text-align: center;
-                margin: 0 2px;
-                height: 12vh;
-                width: 47vw;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 4px;
+        width: 100vw;
+        div{
+            margin: 2px 2px;
+            text-align: center;
+            height: 12vh;
+            width: 47vw;
+            background-color: #470047;
+            border-radius: 24px;
+            p{
+                margin: 4vh 0 0 12px;
                 background-color: #470047;
-                border-radius: 24px;
-                p{
-                    margin: 4vh 0 0 12px;
-                    background-color: #470047;
-                    font-size: 18px;
-                    // color: white;
-                    font-weight: 300;
-                    margin-right: 20px;
-                }
+                font-size: 18px;
+                // color: white;
+                font-weight: 300;
+                margin-right: 20px;
             }
         }
     }
+}
 }
 
 @media only screen and (min-width: 600px) {
@@ -128,6 +130,7 @@ export const GlobalStyles = createGlobalStyle`
     
         .play {
             border: none;
+            margin: 0 2px;
             text-decoration: none;
             width: 525px;
             padding: 20px;
@@ -148,29 +151,30 @@ export const GlobalStyles = createGlobalStyle`
         }
     
         .answer-container {
-                .answer-row{
-                display: flex;
-                justify-content: space-around;
-                margin: 4px 0;
-                div{
-                    text-align: center;
-                    margin: 0 2px;
-                    height: 12vh;
-                    width: 280px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 565px;
+            margin-top: 4px;
+
+            
+            div{
+                margin: 2px 2px;
+                text-align: center;
+                height: 12vh;
+                width: 278px;
+                background-color: #470047;
+                border-radius: 24px;
+                p{
+                    margin: 4vh 0 0 12px;
                     background-color: #470047;
-                    border-radius: 24px;
-                    p{
-                        margin: 4vh 0 0 12px;
-                        background-color: #470047;
-                        font-size: 18px;
-                        // color: white;
-                        font-weight: 300;
-                        margin-right: 20px;
-                    }
+                    font-size: 18px;
+                    // color: white;
+                    font-weight: 300;
+                    margin-right: 20px;
                 }
             }
         }
-    }
     
 }
 `;
