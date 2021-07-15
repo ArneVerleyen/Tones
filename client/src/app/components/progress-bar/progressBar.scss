@@ -1,0 +1,9 @@
+@import '../../app.scss';
+
+.progressBar {
+    height: 20px;
+    width: 94vw;
+    background-color: $color-light-purple;
+    border-radius: 50px;
+    margin: 2px 2px;
+}

@@ -6,7 +6,9 @@ import play from '../../_static/icons/play.svg';
 import soundIcon from '../../_static/icons/sound-icon.svg';
 import {wrongTheme, rightTheme, normalTheme} from './themes';
 import {ThemeProvider} from 'styled-components';
-import {GlobalStyles} from './GlobalStyles'
+import {GlobalStyles} from './GlobalStyles';
+
+import { ProgressBar } from '../progress-bar';
 
 const Intervals = () => {
 
@@ -355,6 +357,7 @@ const Intervals = () => {
     };
 
     const octave = () => {
+    console.log((answers.right/(answers.wrong + answers.right))*100)
         if (practiseIntervals[musicalInterval - 1] === 'P8') {
             getRandomInterval();
             getRandomTone();
@@ -393,6 +396,14 @@ const Intervals = () => {
                 <div className='play' onClick={handlePlay}>
                     <p>Play interval</p>
                     <img src={play} alt='playbutton' />
+                </div>
+                <div className='score'>
+                    <div>
+                        {answers.right}/{answers.wrong + answers.right}
+                    </div>
+                    <div>
+                        <ProgressBar key={1} completed={(answers.right/(answers.wrong + answers.right))*100} />
+                    </div>
                 </div>
                 <div className='answer-container'>
                     {
