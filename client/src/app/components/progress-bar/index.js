@@ -1,2 +1,7 @@
 import { default as ProgressBar } from './ProgressBar';
-export {ProgressBar};
+import { default as ProgressBarSmall } from './ProgressBarSmall';
+
+export {
+    ProgressBar, 
+    ProgressBarSmall
+};

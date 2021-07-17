@@ -5,7 +5,9 @@ import * as ROUTES from '../../routes';
 
 import './intervalSettings.scss';
 
-const IntervalSettings = () => {
+const IntervalSettings = (props) => {
+
+    const typeOfTraining = props;
 
     const [intervalSettings, setIntervalSettings] = useState([
         false, false, false, true, false, false, true, false, false, false, false, true, true, false
@@ -39,6 +41,7 @@ const IntervalSettings = () => {
         P8: intervalSettings[11],
         ascending: intervalSettings[12],
         descending: intervalSettings[13],
+        typeOfTraining: typeOfTraining.typeOfTraining
         };
 
         let count = 0;
@@ -60,7 +63,11 @@ const IntervalSettings = () => {
 
         if (settings.ascending && count > 2 | settings.descending && count > 2) {
             localStorage.setItem('settings', JSON.stringify(settings));
-            history.push(ROUTES.INTERVALS);
+            if (typeOfTraining.typeOfTraining === "asynchrone") {
+                history.push(ROUTES.INTERVALS);
+            } else if (typeOfTraining.typeOfTraining === 'synchrone') {
+                history.push(ROUTES.INTERVALS_SYNCHRONIC);
+            };
         };
     };
 

@@ -3,7 +3,7 @@ import {IntervalSettings} from '../../components';
 
 const IntervalSettingsPage = () => {
     return (
-        <IntervalSettings/>
+        <IntervalSettings typeOfTraining={'asynchrone'}/>
     );
 };
 

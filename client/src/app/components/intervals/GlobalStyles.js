@@ -23,6 +23,7 @@ export const GlobalStyles = createGlobalStyle`
             margin: 0 5px;
         }
         .played-note{
+            cursor: pointer;
             margin: 0 2px;
             width: 47vw;
             padding: 1.2vh 0vw;
@@ -45,6 +46,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .play {
+        cursor: pointer;
         border: none;
         text-decoration: none;
         width: 85vw;
@@ -73,6 +75,7 @@ export const GlobalStyles = createGlobalStyle`
         margin-top: 4px;
         width: 100vw;
         div{
+            cursor: pointer;
             margin: 2px 2px;
             text-align: center;
             height: 12vh;
@@ -105,11 +108,13 @@ export const GlobalStyles = createGlobalStyle`
             align-items: center;
             justify-content: center;
             svg {
+                cursor: pointer;
                 margin: 20px 50px;
             }
         }
 
         .end-session {
+            cursor: pointer;
             text-align: center;
             background-color: #470047;
             border-radius: 24px;
@@ -138,6 +143,7 @@ export const GlobalStyles = createGlobalStyle`
                 margin: 0 5px;
             }
             .played-note{
+                cursor: pointer;
                 margin: 0 2px;
                 width: 280px;
                 padding: 1.2vh 0vw;
@@ -160,6 +166,7 @@ export const GlobalStyles = createGlobalStyle`
         }
     
         .play {
+            cursor: pointer;
             border: none;
             margin: 0 2px;
             text-decoration: none;
@@ -187,9 +194,9 @@ export const GlobalStyles = createGlobalStyle`
             flex-wrap: wrap;
             width: 565px;
             margin-top: 4px;
-
-            
+    
             div {
+                cursor: pointer;
                 margin: 2px 2px;
                 text-align: center;
                 height: 12vh;

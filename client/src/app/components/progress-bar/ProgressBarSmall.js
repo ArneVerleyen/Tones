@@ -1,7 +1,7 @@
 import React from 'react';
-import './progressBar.scss';
+import './progressBarSmall.scss';
 
-const ProgressBar = (props) => {
+const ProgressBarSmall = (props) => {
     const completed = props;
 
     const fillStyle = {
@@ -13,11 +13,11 @@ const ProgressBar = (props) => {
     };
 
     return (
-        <div className='progressBar'>
+        <div className='progressBarSmall'>
             <div style={fillStyle}>
             </div>
         </div>
     );
 };
 
-export default ProgressBar;
+export default ProgressBarSmall;

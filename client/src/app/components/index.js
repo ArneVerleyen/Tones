@@ -5,3 +5,4 @@ export * from './auth';
 export * from './training';
 export * from './interval-settings';
 export * from './footer';
+export * from './end-session';

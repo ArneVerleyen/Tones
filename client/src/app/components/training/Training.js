@@ -7,6 +7,7 @@ const Training = () => {
     return (
         <div className='training-container' >
             <Link to={Routes.INTERVAL_SETTINGS} >Intervals training</Link>
+            <Link to={Routes.INTERVALS_SYNCHRONIC_SETTINGS} >Intervals in harmony training</Link>
         </div>
     );
 };
