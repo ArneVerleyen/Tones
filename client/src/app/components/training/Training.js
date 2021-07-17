@@ -6,7 +6,7 @@ import * as Routes from '../../routes';
 const Training = () => {
     return (
         <div className='training-container' >
-            <Link to={Routes.INTERVALS} >Intervals training</Link>
+            <Link to={Routes.INTERVAL_SETTINGS} >Intervals training</Link>
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useHistory } from 'react-router';
 // import './intervals.scss';
 import * as Tone from 'tone';
 // import  {StartAudioContext} from 'startaudiocontext';
@@ -7,18 +8,31 @@ import soundIcon from '../../_static/icons/sound-icon.svg';
 import {wrongTheme, rightTheme, normalTheme} from './themes';
 import {ThemeProvider} from 'styled-components';
 import {GlobalStyles} from './GlobalStyles';
-
+import * as ROUTES from '../../routes';
 import { ProgressBar } from '../progress-bar';
 
 const Intervals = () => {
 
+    let history = useHistory();
+
+    let settings = JSON.parse(localStorage.getItem('settings'));
+
+    if (settings === null) {
+        history.push(ROUTES.INTERVAL_SETTINGS);
+    };
+
     const [ musicalInterval, setMusicalInterval ] = useState(0);
     const [ intervalOctave, setIntervalOctave ] = useState(4);  
     const [ tone, setTone ] = useState(1);
+    const [ firstNote, setFirstNote ] = useState('E4');
+    const [ secondNote, setSecondNote ] = useState('E4');
+    const [ order, setOrder ] = useState(0);
+
     const [ answers, setAnswers ] = useState({right: 0, wrong: 0});
+
     const [background, setBackground] = useState(normalTheme);
 
-    let settings = JSON.parse(localStorage.getItem('settings'));
+    console.log(settings);
 
     // Use memo hook so array doesn't reredener because of useCallback hook dependency
     let practiseIntervals = useMemo(() => {
@@ -44,6 +58,8 @@ const Intervals = () => {
 
     let practiseIntervalsLength = practiseIntervals.length;
 
+    // Get random interval, octave, asc/desc order and note.
+
     const getRandomInterval = () => {
         const random = Math.floor((Math.random() * practiseIntervalsLength) + 1);
         setMusicalInterval(random);
@@ -60,10 +76,18 @@ const Intervals = () => {
         console.log(random);
     };
 
+    const getRandomOrder = () => {
+        if (settings.descending && settings.ascending) {
+            let random = Math.floor((Math.random() * 2) + 1);
+            setOrder(random);
+        };
+    };
+
     if (musicalInterval === 0) {
         getRandomInterval();
         getRandomTone();
         getRandomOctave();
+        getRandomOrder();
     };
 
     const getNormalBackground = useCallback(() => {
@@ -171,22 +195,52 @@ const Intervals = () => {
         console.log(referenceNote);
         console.log(questionNote);
 
-        // console.log(answers);
+        setFirstNote(referenceNote);
+        setSecondNote(questionNote);
 
         Tone.start();
         const now = Tone.now();
         const synth = new Tone.Synth().toDestination();
-        synth.triggerAttackRelease(referenceNote, "4n", now);
-        synth.triggerAttackRelease(questionNote, "2n", now + 0.5);
-    }, [ intervalOctave, musicalInterval, practiseIntervals, tone])
+
+        if (settings.ascending && settings.descending && order === 1) {
+            synth.triggerAttackRelease(referenceNote, "4n", now);
+            synth.triggerAttackRelease(questionNote, "2n", now + 0.5);
+        } else if (settings.ascending && settings.descending && order === 2) {
+            synth.triggerAttackRelease(questionNote, "4n", now);
+            synth.triggerAttackRelease(referenceNote, "2n", now + 0.5);
+        } else if (settings.ascending) {
+            synth.triggerAttackRelease(referenceNote, "4n", now);
+            synth.triggerAttackRelease(questionNote, "2n", now + 0.5);
+        } else if (settings.descending) {
+            synth.triggerAttackRelease(questionNote, "4n", now);
+            synth.triggerAttackRelease(referenceNote, "2n", now + 0.5);
+        };
+        
+    }, [intervalOctave, musicalInterval, order, practiseIntervals, settings.ascending, settings.descending, tone])
 
     useEffect(() => {
         handlePlay();
-    }, [musicalInterval, handlePlay])
+    }, [musicalInterval, handlePlay]);
 
     useEffect(() => {
         setTimeout(() => {getNormalBackground()}, 1000);
     }, [background, getNormalBackground]);
+
+    // Play each note seperate
+
+    const playReferenceNote = () => {
+        Tone.start();
+        const now = Tone.now();
+        const synth = new Tone.Synth().toDestination();
+        synth.triggerAttackRelease(firstNote, "4n", now);
+    };
+
+    const playQuestionNote = () => {
+        Tone.start();
+        const now = Tone.now();
+        const synth = new Tone.Synth().toDestination();
+        synth.triggerAttackRelease(secondNote, "4n", now);
+    };
 
     // Functions that check if interval is correct.
 
@@ -195,6 +249,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             setBackground(rightTheme);
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
@@ -210,6 +265,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             setBackground(rightTheme);
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
@@ -225,6 +281,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             setBackground(rightTheme);
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
@@ -241,6 +298,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
             setBackground(rightTheme);
@@ -256,6 +314,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             setBackground(rightTheme);
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
@@ -271,6 +330,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             setBackground(rightTheme);
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
@@ -286,6 +346,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             setBackground(rightTheme);
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
@@ -301,6 +362,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             setBackground(rightTheme);
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
@@ -316,6 +378,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             setBackground(rightTheme);
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
@@ -331,6 +394,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             setBackground(rightTheme);
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
@@ -346,6 +410,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             setBackground(rightTheme);
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
@@ -362,6 +427,7 @@ const Intervals = () => {
             getRandomInterval();
             getRandomTone();
             getRandomOctave();
+            getRandomOrder();
             setBackground(rightTheme);
             const rightAnswer =  answers.right + 1;
             setAnswers({right: rightAnswer, wrong: answers.wrong});
@@ -372,21 +438,18 @@ const Intervals = () => {
         }
     };
 
-    //@ TODO: Counter weergeven in balk op het scherm juist/fout
-
-
     return  (
         <ThemeProvider theme={background}>
             <GlobalStyles/>
             <div className='intervals-container wrong'>
                 <div className='played-notes'>
-                    <div className='played-note' >
+                    <div className='played-note' onClick={playReferenceNote} >
                         <h3>Reference note</h3>
                         <div>
                             <img src={soundIcon} alt='Sound icon' />
                         </div>
                     </div>
-                    <div className='played-note'>
+                    <div className='played-note' onClick={playQuestionNote} >
                         <h3>Question note</h3>
                         <div>
                             <img src={soundIcon} alt='Sound icon' />
@@ -479,6 +542,24 @@ const Intervals = () => {
                             <p>Octave</p>
                         </div>
                     } 
+                </div>
+
+                <div className='intervals-footer'>
+                    <div className='icons-container'>
+                    
+                            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="108" viewBox="0 0 38 108">
+                                <text id="_" data-name="?" transform="translate(19 85)" fill="#ffb94e" font-size="95" font-family="Baskerville"><tspan x="-18.81" y="0">?</tspan></text>
+                            </svg>
+                        
+                          
+                            <svg xmlns="http://www.w3.org/2000/svg" width="58.234" height="60.832" viewBox="0 0 58.234 60.832">
+                                <path id="cog-solid" d="M76.134,45.824l-5.225-3.017a23.624,23.624,0,0,0,0-8.61l5.225-3.017a1.482,1.482,0,0,0,.675-1.717,30.545,30.545,0,0,0-6.709-11.6,1.476,1.476,0,0,0-1.815-.282L63.06,20.6a23.146,23.146,0,0,0-7.457-4.3V10.27a1.469,1.469,0,0,0-1.153-1.435,30.832,30.832,0,0,0-13.393,0A1.469,1.469,0,0,0,39.9,10.27V16.3a23.876,23.876,0,0,0-7.457,4.3l-5.212-3.017a1.457,1.457,0,0,0-1.815.282,30.362,30.362,0,0,0-6.709,11.6,1.467,1.467,0,0,0,.675,1.717l5.225,3.017a23.624,23.624,0,0,0,0,8.61l-5.225,3.017a1.482,1.482,0,0,0-.675,1.717,30.545,30.545,0,0,0,6.709,11.6,1.476,1.476,0,0,0,1.815.282l5.225-3.017a23.146,23.146,0,0,0,7.457,4.3V66.76a1.469,1.469,0,0,0,1.153,1.435,30.832,30.832,0,0,0,13.393,0,1.469,1.469,0,0,0,1.153-1.435V60.726a23.876,23.876,0,0,0,7.457-4.3L68.3,59.438a1.457,1.457,0,0,0,1.815-.282,30.362,30.362,0,0,0,6.709-11.6A1.515,1.515,0,0,0,76.134,45.824Zm-28.38,2.49A9.812,9.812,0,1,1,57.566,38.5,9.825,9.825,0,0,1,47.754,48.314Z" transform="translate(-18.644 -8.099)" fill="#ffb94e"/>
+                            </svg>
+                        
+                    </div>
+                    <div className='end-session'>
+                        <p>End session</p>
+                    </div>
                 </div>
             </div>
         </ThemeProvider>

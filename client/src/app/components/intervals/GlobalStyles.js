@@ -89,6 +89,37 @@ export const GlobalStyles = createGlobalStyle`
             }
         }
     }
+
+    .score {
+        text-align: center;
+    }
+
+    .intervals-footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 80px;
+
+        .icons-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+                margin: 20px 50px;
+            }
+        }
+
+        .end-session {
+            text-align: center;
+            background-color: #470047;
+            border-radius: 24px;
+            padding: 20px;
+            p {
+                font-size: 24px;
+                background-color: #470047;
+            }
+        }
+    }
 }
 }
 
@@ -158,7 +189,7 @@ export const GlobalStyles = createGlobalStyle`
             margin-top: 4px;
 
             
-            div{
+            div {
                 margin: 2px 2px;
                 text-align: center;
                 height: 12vh;
@@ -175,6 +206,10 @@ export const GlobalStyles = createGlobalStyle`
                 }
             }
         }
+        .score {
+            text-align: center;
+        }
+    }    
     
 }
 `;

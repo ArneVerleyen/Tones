@@ -2,8 +2,11 @@ export const HOME = '/home';
 export const LANDING = '/';
 
 export const TRAINING = '/training';
+
 export const INTERVALS = '/intervals';
 export const INTERVAL_SETTINGS = '/intervals/settings';
+export const INTERVALS_INFO = '/intervals/info';
+export const INTERVALS_END_SESSION = '/intervals/end';
 
 export const CONTACT = '/contact';
 

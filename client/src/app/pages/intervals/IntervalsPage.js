@@ -1,5 +1,5 @@
 import React from 'react';
-import {Intervals} from '../components';
+import {Intervals} from '../../components';
 
 const IntervalsPage = () => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {IntervalSettings} from '../components';
+import {IntervalSettings} from '../../components';
 
 const IntervalSettingsPage = () => {
     return (

@@ -28,6 +28,23 @@
             width: 200px;
             height: 25px;
             padding: 0 10px;
+            color: $color-deep-purple;
+        }
+        input, select, textarea{
+            color: $color-deep-purple;
+            
+        }
+        
+        textarea:focus, input:focus {
+            outline: none !important;
+            color: $color-purple;
+            border: 1px solid $color-deep-purple;
+            box-shadow: 0 0 10px $color-light-purple;
+        }
+
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: $color-deep-purple;
+            opacity: 1; /* Firefox */
         }
     }
     button {

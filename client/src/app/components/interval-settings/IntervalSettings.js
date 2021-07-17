@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import * as ROUTES from '../../routes';
+
 import './intervalSettings.scss';
 
 const IntervalSettings = () => {
@@ -58,7 +60,7 @@ const IntervalSettings = () => {
 
         if (settings.ascending && count > 2 | settings.descending && count > 2) {
             localStorage.setItem('settings', JSON.stringify(settings));
-            history.push('/intervals');
+            history.push(ROUTES.INTERVALS);
         };
     };
 
