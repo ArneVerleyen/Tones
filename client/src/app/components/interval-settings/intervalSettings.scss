@@ -14,6 +14,7 @@
             width: 35vw;
             text-align: center;
             margin: 0 5px;
+            cursor: pointer;
             p {
                 font-size: 16px;
                 background-color: inherit;
@@ -29,6 +30,7 @@
             width: 35vw;
             margin: 0 5px;
             text-align: center;
+            cursor: pointer;
             p {
                 font-size: 16px;
                 background-color: inherit;
@@ -58,6 +60,7 @@
         display: flex;
         justify-content: center;
         text-align: center;
+        cursor: pointer;
         h3 {
             background-color: $color-deep-purple;
             padding: 20px 0px;
