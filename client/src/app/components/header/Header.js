@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import { useHistory } from 'react-router';
 import * as Routes from '../../routes';
+import { useAuth } from '../../services';
 
 import './header.scss';
 
@@ -13,6 +15,17 @@ const Header = () => {
     const [open, setOpen] = useState(false);
     const toggleTrue = () => setOpen(true);
     const toggleFalse = () => setOpen(false);
+
+    let history = useHistory();
+
+    const { logout } = useAuth();
+
+    const handleLogout = async () => {
+        logout();
+        history.push(Routes.LANDING);
+    };
+
+    let user = JSON.parse(localStorage.getItem('authUser'));
 
     return (
         <header className='header-container'>
@@ -40,8 +53,10 @@ const Header = () => {
                 <div className='nav-links'>
                     <Link to={Routes.TRAINING}>Training</Link>
 
-                    <Link to={Routes.AUTH_SIGN_IN}>Login</Link>
-                    <Link to={Routes.AUTH_SIGN_UP}>Register</Link>
+                    {!user && <Link to={Routes.AUTH_SIGN_IN}>Login</Link>}
+                    {!user && <Link to={Routes.AUTH_SIGN_UP}>Register</Link>}
+                    {user && <button onClick={handleLogout}>Logout</button>}
+
                 </div>
             }
             

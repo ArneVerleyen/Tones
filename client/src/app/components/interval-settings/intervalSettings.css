@@ -1,0 +1,235 @@
+@import url("https://use.typekit.net/slo0qqy.css");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.interval-settings-container {
+  background-color: #6F0B5B;
+  margin-bottom: 40px;
+}
+
+.interval-settings-container .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 0 10px 10px 15px;
+}
+
+.interval-settings-container .row div {
+  background-color: #470047;
+  border-radius: 24px;
+  padding: 20px;
+  width: 35vw;
+  text-align: center;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.interval-settings-container .row div p {
+  font-size: 16px;
+  background-color: inherit;
+  color: #FFB94E;
+  font-family: baskerville-urw, serif;
+}
+
+.interval-settings-container .row .active {
+  background-color: #FFB94E;
+  border-radius: 24px;
+  padding: 20px;
+  width: 35vw;
+  margin: 0 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.interval-settings-container .row .active p {
+  font-size: 16px;
+  background-color: inherit;
+  color: #470047;
+  font-family: baskerville-urw, serif;
+}
+
+.interval-settings-container .select {
+  text-align: center;
+}
+
+.interval-settings-container .select select {
+  font-size: 16px;
+  background-color: inherit;
+  color: #FFB94E;
+  font-family: baskerville-urw, serif;
+  border: none;
+  background-color: #470047;
+  padding: 20px;
+  border-radius: 24px;
+  width: 91vw;
+}
+
+.interval-settings-container .link {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.interval-settings-container .link h3 {
+  background-color: #470047;
+  padding: 20px 0px;
+  color: #FFB94E;
+  font-size: 16px;
+  font-family: baskerville-urw, serif;
+  width: 91vw;
+  border-radius: 24px;
+}
+
+.interval-settings-container .error {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.interval-settings-container .error div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 15px 0;
+  background-color: #FFB94E;
+  width: 91vw;
+  border-radius: 24px;
+  padding: 20px 0px;
+}
+
+.interval-settings-container .error div svg {
+  margin-left: 10px;
+  background-color: #FFB94E;
+}
+
+.interval-settings-container .error div p {
+  margin-right: 10px;
+  text-align: center;
+  background-color: #FFB94E;
+  color: #470047;
+  font-size: 16px;
+  font-family: baskerville-urw, serif;
+}
+
+@media only screen and (min-width: 600px) {
+  .interval-settings-container {
+    background-color: #6F0B5B;
+    margin-bottom: 40px;
+  }
+  .interval-settings-container .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 0 10px 10px 15px;
+  }
+  .interval-settings-container .row div {
+    background-color: #470047;
+    border-radius: 24px;
+    padding: 20px;
+    width: 260px;
+    text-align: center;
+    margin: 0 5px;
+  }
+  .interval-settings-container .row div p {
+    font-size: 16px;
+    background-color: inherit;
+    color: #FFB94E;
+    font-family: baskerville-urw, serif;
+  }
+  .interval-settings-container .row .active {
+    background-color: #FFB94E;
+    border-radius: 24px;
+    padding: 20px;
+    width: 260px;
+    margin: 0 5px;
+    text-align: center;
+  }
+  .interval-settings-container .row .active p {
+    font-size: 16px;
+    background-color: inherit;
+    color: #470047;
+    font-family: baskerville-urw, serif;
+  }
+  .interval-settings-container .link {
+    margin-top: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .interval-settings-container .link h3 {
+    width: 600px;
+    background-color: #470047;
+    padding: 20px 0px;
+    color: #FFB94E;
+    font-size: 16px;
+    font-family: baskerville-urw, serif;
+    border-radius: 24px;
+  }
+  .interval-settings-container .error {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .interval-settings-container .error div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-item-align: center;
+        align-self: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 15px 0;
+    background-color: #FFB94E;
+    width: 91vw;
+    border-radius: 24px;
+    padding: 20px 0px;
+  }
+  .interval-settings-container .error div svg {
+    margin-left: 10px;
+    background-color: #FFB94E;
+  }
+  .interval-settings-container .error div p {
+    margin-right: 10px;
+    text-align: center;
+    background-color: #FFB94E;
+    color: #470047;
+    font-size: 16px;
+    font-family: baskerville-urw, serif;
+  }
+}
+/*# sourceMappingURL=intervalSettings.css.map */

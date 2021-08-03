@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { ProgressBarSmall } from '../progress-bar';
 import './endSession.scss';
 
+import { useApi } from '../../services';
+
 const EndSession = () => {
+
+    const { findAllSessions } = useApi();
+    const [ sessions, setSessions ] = useState();
 
     const score = JSON.parse(localStorage.getItem('score'));
     console.log(score);
+
+    const initFetch = useCallback(
+        () => {
+            const fetchSessions = async () => {
+                const data = await findAllSessions(0);
+                setSessions(data);
+                console.log(data)
+            };
+            fetchSessions();
+        }, [findAllSessions],
+    );
+
+    useEffect(() => {
+        initFetch();
+        console.log(sessions);
+        return () => {
+
+        }
+    }, [initFetch]);
+
+  
 
     return (
         <div className='end-session-container'>

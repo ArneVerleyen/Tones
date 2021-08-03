@@ -48,5 +48,14 @@
             margin-bottom: 5px;
         }
 
+        button {
+            border: none;
+            text-decoration: none;
+            color: $color-yellow;
+            font-family: $titles;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
     }
 }

@@ -1,0 +1,14 @@
+{
+    "version": 3,
+    "mappings": "AKAA,OAAO,CAAC,0CAAI;AJEZ,AAAA,CAAC,CAAA;EACG,MAAM,EAAE,CAAC;EACT,OAAO,EAAC,CAAC;CACZ;;ADHD,AAAA,mBAAmB,CAAA;EACf,gBAAgB,EICL,OAAO;EJAlB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;EACnB,UAAU,EAAE,IAAI;CAenB;;AApBD,AAOI,mBAPe,CAOf,CAAC,CAAA;EACG,KAAK,EIRE,OAAO;EJSd,eAAe,EAAE,IAAI;EACrB,WAAW,EKRT,eAAe,EAAE,KAAK;ELSxB,WAAW,EAAE,GAAG;EAChB,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,MAAM;EAClB,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,IAAI;EACnB,SAAS,EAAE,IAAI;EACf,gBAAgB,EIdJ,OAAO;EJenB,aAAa,EAAE,IAAI;CACtB;;AAGL,MAAM,MAAM,MAAM,MAAM,SAAS,EAAE,KAAK;EACpC,AACI,mBADe,CACf,CAAC,CAAC;IACE,KAAK,EAAE,KAAK;GACf",
+    "sources": [
+        "training.scss",
+        "../../app.scss",
+        "../../_sass/index.scss",
+        "../../_sass/abstracts/index.scss",
+        "../../_sass/abstracts/variables.scss",
+        "../../_sass/abstracts/fonts.scss"
+    ],
+    "names": [],
+    "file": "training.css"
+}
