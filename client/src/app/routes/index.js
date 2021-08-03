@@ -17,4 +17,4 @@ export const CONTACT = '/contact';
 export const AUTH_SIGN_IN = '/auth/signin';
 export const AUTH_SIGN_UP = '/auth/signup';
 
-export const TEST = '/test'
+export const USER_SESSIONS = '/user/sessions';

@@ -15,6 +15,7 @@ import {
     EndSessionPage,
     SynchroneIntervalSettingsPage,
     IntervalsSynchronicPage,
+    SessionsPage
 } from './pages';
 
 import * as Routes from './routes';
@@ -46,6 +47,8 @@ function App() {
 
                         <RouteWithLayout exact path = {Routes.INTERVALS_SYNCHRONIC} component = {IntervalsSynchronicPage} layout = {PageLayOut} />
                         <RouteWithLayout exact path = {Routes.INTERVALS_SYNCHRONIC_SETTINGS} component = {SynchroneIntervalSettingsPage} layout = {PageLayOut} />
+
+                        <RouteWithLayout exact path = {Routes.USER_SESSIONS} component = {SessionsPage} layout = {PageLayOut} />
 
                         <RouteWithLayout exact path = {Routes.AUTH_SIGN_IN} component = {LoginPage} layout = {PageLayOut} />
                         <RouteWithLayout exact path = {Routes.AUTH_SIGN_UP} component = {RegisterPage} layout = {PageLayOut} />

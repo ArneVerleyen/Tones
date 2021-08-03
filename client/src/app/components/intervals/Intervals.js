@@ -41,6 +41,7 @@ const Intervals = () => {
         m7: {right: 0, total: 0},
         M7: {right: 0, total: 0},
         P8: {right: 0, total: 0},
+        typeOfTraining: settings.typeOfTraining,
     });
 
 

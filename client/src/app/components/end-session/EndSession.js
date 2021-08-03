@@ -1,4 +1,6 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router';
+import * as Routes from '../../routes';
 import { ProgressBarSmall } from '../progress-bar';
 import './endSession.scss';
 
@@ -6,32 +8,54 @@ import { useApi } from '../../services';
 
 const EndSession = () => {
 
-    const { findAllSessions } = useApi();
-    const [ sessions, setSessions ] = useState();
+    const { storeSession } = useApi();
 
     const score = JSON.parse(localStorage.getItem('score'));
+    const user = JSON.parse(localStorage.getItem('authUser'));
     console.log(score);
+    console.log(user);
 
-    const initFetch = useCallback(
-        () => {
-            const fetchSessions = async () => {
-                const data = await findAllSessions(0);
-                setSessions(data);
-                console.log(data)
-            };
-            fetchSessions();
-        }, [findAllSessions],
-    );
+    let history = useHistory();
 
-    useEffect(() => {
-        initFetch();
-        console.log(sessions);
-        return () => {
+    const handleSave = () => {
+        let body = {
+            status: 'publish',
+            title: user.user_display_name + Date.now(),
+            fields: {
+                minor_second_right: score.m2.right,
+                minor_second_total: score.m2.total,
+                major_second_right: score.M2.right,
+                major_second_total: score.M2.total,
+                minor_third_right: score.m3.right,
+                minor_third_total: score.m3.total,
+                major_third_right: score.M3.right,
+                major_third_total: score.M3.total,
+                perfect_fourth_right: score.P4.right,
+                perfect_fourth_total: score.P4.total,
+                tritone_right: score.tritone.right,
+                tritone_total: score.tritone.total,
+                perfect_fifth_right: score.P5.right,
+                perfect_fifth_total: score.P5.total,
+                minor_sixth_right: score.m6.right,
+                minor_sixth_total: score.m6.total,
+                major_sixth_right: score.M6.right,
+                major_sixth_total: score.M6.total,
+                minor_seventh_right: score.m7.right,
+                minor_seventh_total: score.m7.total,
+                major_seventh_right: score.M7.right,
+                major_seventh_total: score.M7.total,
+                perfect_octave_right: score.P8.right,
+                perfect_octave_total: score.P8.total,
+                type_of_training: score.typeOfTraining,
+                user_id: user.user_id
+            }
+        };
 
-        }
-    }, [initFetch]);
+        storeSession(body, user.token);
 
-  
+        // change to user profile overview.
+        history.push(Routes.TRAINING);
+    };
 
     return (
         <div className='end-session-container'>
@@ -126,7 +150,7 @@ const EndSession = () => {
 
 
 
-           <div className='save'>
+           <div onClick={handleSave} className='save'>
                <p>Save session</p>
            </div>
         </div>
