@@ -7,3 +7,5 @@ export * from './interval-settings';
 export * from './footer';
 export * from './end-session';
 export * from './user';
+export * from './chords';
+export * from './chord-settings';

@@ -1,6 +1,6 @@
 @import '../../app.scss';
 
-.interval-settings-container {
+.triad-settings-container {
     background-color: $color-purple;
     margin-bottom: 40px;
     .row {
@@ -104,7 +104,7 @@
 }
 
 @media only screen and (min-width: 600px) {
-    .interval-settings-container {
+    .triad-settings-container {
         background-color: $color-purple;
         margin-bottom: 40px;
         .row {

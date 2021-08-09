@@ -44,11 +44,47 @@ const ApiProvider = ({children}) => {
         return response.json();
     };
 
+    const getSessionById = async (sessionId) => {
+        let url = `${BASE_URL}/wp-json/wp/v2/session/${sessionId}`;
+        const response = await fetch(url);
+        return response.json();
+    };
+
+    // Chords
+
+    const storeChordSession = async (body, token) => {
+        const options = {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer'+ token
+          },
+          body: JSON.stringify(body)
+        };
+    
+        let url = `${BASE_URL}/wp-json/wp/v2/chord_session`;
+        const response = await fetch(url, options);
+        return response.json();
+    };
+
+    const findAllChordSessionsWithUserId = async (query = null, userId) => {
+        let url = `${BASE_URL}/wp-json/wp/v2/chord_session/?user_id=${userId}`;
+        if (query !== 0) {
+            url = url + `/?page=${query}`;
+        };
+        const response = await fetch(url);
+        return response.json();
+    };
+
     return (
         <ApiContext.Provider value={{
             findAllSessions,
             storeSession,
             findAllSessionsWithUserId,
+            getSessionById,
+            storeChordSession,
+            findAllChordSessionsWithUserId
         }}>
             {children}
         </ApiContext.Provider>

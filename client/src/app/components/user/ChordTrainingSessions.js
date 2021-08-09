@@ -5,9 +5,9 @@ import { ProgressBarSmall } from '../progress-bar';
 
 import { useApi } from '../../services';
 
-const TrainingSessions = ({onReadMore}) => {
+const ChordTrainingSessions = ({onReadMore}) => {
 
-    const { findAllSessionsWithUserId } = useApi();
+    const { findAllChordSessionsWithUserId } = useApi();
     const [ sessions, setSessions ] = useState();
 
     const user = JSON.parse(localStorage.getItem('authUser'));
@@ -15,12 +15,12 @@ const TrainingSessions = ({onReadMore}) => {
     const initFetch = useCallback(
         () => {
             const fetchSessions = async () => {
-                const data = await findAllSessionsWithUserId(0, user.user_id);
+                const data = await findAllChordSessionsWithUserId(0, user.user_id);
                 setSessions(data);
                 console.log(data)
             };
             fetchSessions();
-        }, [findAllSessionsWithUserId, user.user_id],
+        }, [findAllChordSessionsWithUserId, user.user_id],
     );
 
     useEffect(() => {
@@ -66,4 +66,4 @@ const TrainingSessions = ({onReadMore}) => {
     );
 };
 
-export default TrainingSessions;
+export default ChordTrainingSessions;

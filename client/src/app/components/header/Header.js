@@ -55,6 +55,7 @@ const Header = () => {
 
                     {!user && <Link to={Routes.AUTH_SIGN_IN}>Login</Link>}
                     {!user && <Link to={Routes.AUTH_SIGN_UP}>Register</Link>}
+                    {user && <Link to={Routes.USER_SESSIONS}>Progress</Link>}
                     {user && <button onClick={handleLogout}>Logout</button>}
 
                 </div>

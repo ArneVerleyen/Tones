@@ -8,6 +8,9 @@ const Training = () => {
         <div className='training-container' >
             <Link to={Routes.INTERVAL_SETTINGS} >Intervals training</Link>
             <Link to={Routes.INTERVALS_SYNCHRONIC_SETTINGS} >Intervals in harmony training</Link>
+            <Link to={Routes.TRIADS_SETTINGS} >Triad chord training</Link>
+            <Link to={Routes.TRIADS_SETTINGS} >Simple seventh chord training</Link>
+            <Link to={Routes.TRIADS_SETTINGS} >All chords training</Link>
         </div>
     );
 };

@@ -12,8 +12,18 @@ const EndSession = () => {
 
     const score = JSON.parse(localStorage.getItem('score'));
     const user = JSON.parse(localStorage.getItem('authUser'));
-    console.log(score);
-    console.log(user);
+    const settings = JSON.parse(localStorage.getItem('settings'));
+
+    console.log(settings);
+
+    let IntervalsOrder;
+    if (settings.ascending && settings.descending) {
+        IntervalsOrder = "Ascending/Descending";
+    } else if (settings.ascending && !settings.descending) {
+        IntervalsOrder = "Ascending";
+    } else if (settings.descending && !settings.ascending) {
+        IntervalsOrder = "Descending";
+    };
 
     let history = useHistory();
 
@@ -47,7 +57,10 @@ const EndSession = () => {
                 perfect_octave_right: score.P8.right,
                 perfect_octave_total: score.P8.total,
                 type_of_training: score.typeOfTraining,
-                user_id: user.user_id
+                user_id: user.user_id,
+                total_right: score.right,
+                total_answers: score.right + score.wrong,
+                interval_order: IntervalsOrder
             }
         };
 

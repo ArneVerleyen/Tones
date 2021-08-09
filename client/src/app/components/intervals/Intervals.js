@@ -574,7 +574,8 @@ const Intervals = () => {
     };
 
     const endSession = () => {
-        localStorage.setItem('score', JSON.stringify(score));
+        localStorage.setItem('score', JSON.stringify({...score, ...answers}));
+        console.log({...score, ...answers});
         history.push(ROUTES.INTERVALS_END_SESSION);
     };
 
