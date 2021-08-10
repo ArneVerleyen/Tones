@@ -95,7 +95,7 @@ const SessionDetail = () => {
                 <div>
                     <h2>{user.user_display_name}'s Training Session</h2>
                     <div className='session-detail-inner-container'>
-                        <p>Type of training: {session.acf.type_of_training}</p>
+                        <p>Type of training: intervals {session.acf.type_of_training}</p>
                         <p>Date: {formatDate(session.date)}</p>
                         <p>Interval order: {session.acf.interval_order}</p>
                         <p>Practiced intervals: {getPracticedIntervals(session)}</p>

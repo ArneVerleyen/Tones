@@ -12,7 +12,7 @@ const EndSessionChords = () => {
 
     const score = JSON.parse(localStorage.getItem('score'));
     const user = JSON.parse(localStorage.getItem('authUser'));
-    // const settings = JSON.parse(localStorage.getItem('settings'));
+    const settings = JSON.parse(localStorage.getItem('settings'));
 
     console.log(score);
 
@@ -35,9 +35,16 @@ const EndSessionChords = () => {
                 sus2_total: score.sus2.total,
                 sus4_right: score.sus4.right,
                 sus4_total: score.sus4.total,
+                dominant_seventh_right: score.dominant_seventh.right,
+                dominant_seventh_total: score.dominant_seventh.total,
+                major_seventh_right: score.major_seventh.right,
+                major_seventh_total: score.major_seventh.total,
+                minor_seventh_right: score.minor_seventh.right,
+                minor_seventh_total: score.minor_seventh.total,
                 user_id: user.user_id,
                 total_right: score.right,
                 total_answers: score.right + score.wrong,
+                type_of_training: settings.typeOfTraining
             }
         };
 
@@ -92,6 +99,27 @@ const EndSessionChords = () => {
                     <div className='interval-score'>
                         <p>Suspended fourth chords: {score.sus4.right}/{score.sus4.total}</p>
                         <ProgressBarSmall completed={(score.sus4.right/score.sus4.total)*100} />
+                    </div>
+                }
+                {
+                    score.dominant_seventh.total !== 0 &&                 
+                    <div className='interval-score'>
+                        <p>Dominant seventh chords: {score.dominant_seventh.right}/{score.dominant_seventh.total}</p>
+                        <ProgressBarSmall completed={(score.dominant_seventh.right/score.dominant_seventh.total)*100} />
+                    </div>
+                }
+                {
+                    score.minor_seventh.total !== 0 &&                 
+                    <div className='interval-score'>
+                        <p>Minor seventh chords: {score.minor_seventh.right}/{score.minor_seventh.total}</p>
+                        <ProgressBarSmall completed={(score.minor_seventh.right/score.minor_seventh.total)*100} />
+                    </div>
+                }
+                {
+                    score.major_seventh.total !== 0 &&                 
+                    <div className='interval-score'>
+                        <p>Major seventh chords: {score.major_seventh.right}/{score.major_seventh.total}</p>
+                        <ProgressBarSmall completed={(score.major_seventh.right/score.major_seventh.total)*100} />
                     </div>
                 }
             </div>

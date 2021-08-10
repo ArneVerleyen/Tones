@@ -13,6 +13,14 @@ export const TRIADS_SETTINGS = '/triads/settings';
 export const TRIADS_INFO = '/triads/info';
 export const CHORDS_END_SESSION = '/chords/end';
 
+export const SEVENTHS = '/sevenths';
+export const SEVENTHS_SETTINGS = '/sevenths/settings';
+export const SEVENTHS_INFO = '/sevenths/info';
+
+export const CHORDS = '/chords';
+export const CHORDS_SETTINGS = '/chords/settings';
+export const CHORDS_INFO = '/chords/info';
+
 export const INTERVALS_SYNCHRONIC = '/intervals/synchronic';
 export const INTERVALS_SYNCHRONIC_SETTINGS = '/intervals/synchronic/settings';
 

@@ -21,7 +21,12 @@ import {
     TriadsSettingsPage,
     EndSessionChordsPage,
     ProgressListPage,
-    ChordTrainingSessionsPage
+    ChordTrainingSessionsPage,
+    ChordSessionDetailPage,
+    ChordsSettingsPage,
+    SeventhChordsSettingPage,
+    SeventhsPage,
+    ChordsPage
 } from './pages';
 
 import * as Routes from './routes';
@@ -52,6 +57,12 @@ function App() {
                         <RouteWithLayout exact path = {Routes.TRIADS} component = {TriadsPage} layout = {PageLayOut} />
                         <RouteWithLayout exact path = {Routes.TRIADS_SETTINGS} component = {TriadsSettingsPage} layout = {PageLayOut} />
                         
+                        <RouteWithLayout exact path = {Routes.SEVENTHS_SETTINGS} component = {SeventhChordsSettingPage} layout = {PageLayOut} />
+                        <RouteWithLayout exact path = {Routes.SEVENTHS} component = {SeventhsPage} layout = {PageLayOut} />
+                       
+                        <RouteWithLayout exact path = {Routes.CHORDS_SETTINGS} component = {ChordsSettingsPage} layout = {PageLayOut} />
+                        <RouteWithLayout exact path = {Routes.CHORDS} component = {ChordsPage} layout = {PageLayOut} />
+                        
                         <RouteWithLayout exact path = {Routes.CHORDS_END_SESSION} component = {EndSessionChordsPage} layout = {PageLayOut} />
 
                         <RouteWithLayout exact path = {Routes.INTERVALS_SYNCHRONIC} component = {IntervalsSynchronicPage} layout = {PageLayOut} />
@@ -61,6 +72,7 @@ function App() {
                         <RouteWithLayout exact path = {Routes.USER_SESSIONS} component = {ProgressListPage} layout = {PageLayOut} />
                         <RouteWithLayout exact path = {Routes.INTERVALS_PROGRESS_LIST} component = {SessionsPage} layout = {PageLayOut} />
                         <RouteWithLayout exact path = {Routes.CHORDS_PROGRESS_LIST} component = {ChordTrainingSessionsPage} layout = {PageLayOut} />
+                        <RouteWithLayout exact path = {Routes.CHORDS_PROGRESS_DETAIL} component = {ChordSessionDetailPage} layout = {PageLayOut} />
 
                         <RouteWithLayout exact path = {Routes.USER_SESSION_DETAIL} component = {SessionDetailPage} layout = {PageLayOut} />
 

@@ -77,6 +77,12 @@ const ApiProvider = ({children}) => {
         return response.json();
     };
 
+    const getChordSessionById = async (sessionId) => {
+        let url = `${BASE_URL}/wp-json/wp/v2/chord_session/${sessionId}`;
+        const response = await fetch(url);
+        return response.json();
+    };
+
     return (
         <ApiContext.Provider value={{
             findAllSessions,
@@ -84,7 +90,8 @@ const ApiProvider = ({children}) => {
             findAllSessionsWithUserId,
             getSessionById,
             storeChordSession,
-            findAllChordSessionsWithUserId
+            findAllChordSessionsWithUserId,
+            getChordSessionById
         }}>
             {children}
         </ApiContext.Provider>

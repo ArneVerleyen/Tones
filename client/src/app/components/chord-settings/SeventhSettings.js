@@ -5,12 +5,12 @@ import * as ROUTES from '../../routes';
 
 import './triadSettings.scss';
 
-const TriadSettings = () => {
+const SeventhSettings = () => {
 
-    const typeOfTraining = 'Triad chords';
+    const typeOfTraining = 'Seventh chords';
 
     const [intervalSettings, setIntervalSettings] = useState([
-        true, true, false, false, false, false
+        true, true, false
     ]);
 
     let history = useHistory();
@@ -26,12 +26,9 @@ const TriadSettings = () => {
     const start = () => {
 
        let settings = {
-        minor: intervalSettings[0],
-        major:intervalSettings[1],
-        augmented: intervalSettings[2],
-        diminished: intervalSettings[3],
-        sus2: intervalSettings[4],
-        sus4: intervalSettings[5],
+        dominant_seventh: intervalSettings[0],
+        minor_seventh:intervalSettings[1],
+        major_seventh: intervalSettings[2],
         typeOfTraining: typeOfTraining
         };
 
@@ -49,7 +46,7 @@ const TriadSettings = () => {
 
         if (count > 1) {
             localStorage.setItem('settings', JSON.stringify(settings));
-            history.push(ROUTES.TRIADS);
+            history.push(ROUTES.SEVENTHS);
         };
     };
 
@@ -60,22 +57,22 @@ const TriadSettings = () => {
                     intervalSettings[0]
                     ?   
                     <div className='active' onClick={() => toggle(0)}>
-                        <p>Minor chords</p>
+                        <p>Dominant seventh chords</p>
                     </div>
                     :   
                     <div onClick={() => toggle(0)}>
-                        <p>Minor chords</p>
+                        <p>Dominant seventh chords</p>
                     </div>
                 }
                 {
                     intervalSettings[1]
                     ?   
                     <div className='active' onClick={() => toggle(1)}>
-                        <p>Major chords</p>
+                        <p>Minor seventh chords</p>
                     </div>
                     :   
                     <div onClick={() => toggle(1)}>
-                        <p>Major chords</p>
+                        <p>Minor seventh chords</p>
                     </div>
                 }
 
@@ -85,46 +82,11 @@ const TriadSettings = () => {
                     intervalSettings[2]
                     ?   
                     <div className='active' onClick={() => toggle(2)}>
-                        <p>Augmented chords</p>
+                        <p>Major seventh chords</p>
                     </div>
                     :   
                     <div onClick={() => toggle(2)}>
-                        <p>Augmented chords</p>
-                    </div>
-                }
-                {
-                    intervalSettings[3]
-                    ?   
-                    <div className='active' onClick={() => toggle(3)}>
-                        <p>Diminished chords</p>
-                    </div>
-                    :   
-                    <div onClick={() => toggle(3)}>
-                        <p>Diminished chords</p>
-                    </div>
-                }
-            </div>
-            <div className="row" >
-                {
-                    intervalSettings[4]
-                    ?   
-                    <div className='active' onClick={() => toggle(4)}>
-                        <p>Suspended second chords</p>
-                    </div>
-                    :   
-                    <div onClick={() => toggle(4)}>
-                        <p>Suspended second chords</p>
-                    </div>
-                }
-                {
-                    intervalSettings[5]
-                    ?   
-                    <div className='active' onClick={() => toggle(5)}>
-                        <p>Suspended fourth chords</p>
-                    </div>
-                    :   
-                    <div onClick={() => toggle(5)}>
-                        <p>Suspended fourth chords</p>
+                        <p>Major seventh chords</p>
                     </div>
                 }
             </div>
@@ -160,4 +122,4 @@ const TriadSettings = () => {
     );
 };
 
-export default TriadSettings;
+export default SeventhSettings;

@@ -5,12 +5,12 @@ import * as ROUTES from '../../routes';
 
 import './triadSettings.scss';
 
-const TriadSettings = () => {
+const ChordsSettings = (props) => {
 
-    const typeOfTraining = 'Triad chords';
+    const typeOfTraining = 'All chords';
 
     const [intervalSettings, setIntervalSettings] = useState([
-        true, true, false, false, false, false
+        true, true, true, true, true, true, true, true, true
     ]);
 
     let history = useHistory();
@@ -32,6 +32,9 @@ const TriadSettings = () => {
         diminished: intervalSettings[3],
         sus2: intervalSettings[4],
         sus4: intervalSettings[5],
+        dominant_seventh: intervalSettings[6],
+        minor_seventh:intervalSettings[7],
+        major_seventh: intervalSettings[8],
         typeOfTraining: typeOfTraining
         };
 
@@ -49,7 +52,7 @@ const TriadSettings = () => {
 
         if (count > 1) {
             localStorage.setItem('settings', JSON.stringify(settings));
-            history.push(ROUTES.TRIADS);
+            history.push(ROUTES.CHORDS);
         };
     };
 
@@ -128,6 +131,44 @@ const TriadSettings = () => {
                     </div>
                 }
             </div>
+            <div className="row" >
+                {
+                    intervalSettings[6]
+                    ?   
+                    <div className='active' onClick={() => toggle(6)}>
+                        <p>Dominant seventh chords</p>
+                    </div>
+                    :   
+                    <div onClick={() => toggle(6)}>
+                        <p>Dominant seventh chords</p>
+                    </div>
+                }
+                {
+                    intervalSettings[7]
+                    ?   
+                    <div className='active' onClick={() => toggle(7)}>
+                        <p>Minor seventh chords</p>
+                    </div>
+                    :   
+                    <div onClick={() => toggle(7)}>
+                        <p>Minor seventh chords</p>
+                    </div>
+                }
+
+            </div>
+            <div className="row" >
+                {
+                    intervalSettings[8]
+                    ?   
+                    <div className='active' onClick={() => toggle(8)}>
+                        <p>Major seventh chords</p>
+                    </div>
+                    :   
+                    <div onClick={() => toggle(8)}>
+                        <p>Major seventh chords</p>
+                    </div>
+                }
+            </div>
 
             <div className='link'>
                 <h3>Recommended training</h3>
@@ -160,4 +201,4 @@ const TriadSettings = () => {
     );
 };
 
-export default TriadSettings;
+export default ChordsSettings;

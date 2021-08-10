@@ -49,7 +49,7 @@ const ChordTrainingSessions = ({onReadMore}) => {
 
     return (
         <div className='training-sessions-container'>
-            <h2>{user.user_display_name}'s Training Sessions</h2>
+            <h2>{user.user_display_name}'s chord training sessions</h2>
             {sessions && sessions.map((session, index) => (
                 <div key={index} className='session-container' onClick={(ev) => handleReadMore(ev,session.id)}>
                     <div className='session-block'>

@@ -49,11 +49,11 @@ const TrainingSessions = ({onReadMore}) => {
 
     return (
         <div className='training-sessions-container'>
-            <h2>{user.user_display_name}'s Training Sessions</h2>
+            <h2>{user.user_display_name}'s interval training sessions</h2>
             {sessions && sessions.map((session, index) => (
                 <div key={index} className='session-container' onClick={(ev) => handleReadMore(ev,session.id)}>
                     <div className='session-block'>
-                        <h4>{session.acf.type_of_training}</h4>
+                        <h4>Intervals {session.acf.type_of_training}</h4>
                         <p>{formatDate(session.date)}</p>
                     </div>
                     <div className='session-block-2'>
