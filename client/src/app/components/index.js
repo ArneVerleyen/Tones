@@ -9,3 +9,4 @@ export * from './end-session';
 export * from './user';
 export * from './chords';
 export * from './chord-settings';
+export * from './info';

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useHistory } from 'react-router';
+import React, {useState} from 'react';
+import { useHistory, Link } from 'react-router';
 import * as Routes from '../../routes';
 import { ProgressBarSmall } from '../progress-bar';
 import './endSession.scss';
@@ -8,13 +8,13 @@ import { useApi } from '../../services';
 
 const EndSession = () => {
 
+    const [ logged, setLogged ] = useState(true);
+
     const { storeSession } = useApi();
 
     const score = JSON.parse(localStorage.getItem('score'));
     const user = JSON.parse(localStorage.getItem('authUser'));
     const settings = JSON.parse(localStorage.getItem('settings'));
-
-    console.log(settings);
 
     let IntervalsOrder;
     if (settings.ascending && settings.descending) {
@@ -23,6 +23,10 @@ const EndSession = () => {
         IntervalsOrder = "Ascending";
     } else if (settings.descending && !settings.ascending) {
         IntervalsOrder = "Descending";
+    };
+
+    if (localStorage.getItem('authUser') === 'null'){
+       console.log('elo')
     };
 
     let history = useHistory();
@@ -68,6 +72,10 @@ const EndSession = () => {
 
         // change to user profile overview.
         history.push(Routes.TRAINING);
+    };
+
+    const goRegister = () => {
+        history.push(Routes.AUTH_SIGN_UP);
     };
 
     return (
@@ -162,10 +170,20 @@ const EndSession = () => {
             </div>
 
 
+        {
+            localStorage.getItem('authUser') !== 'null' &&
+            <div onClick={handleSave} className='save'>
+                <p>Save session</p>
+            </div> 
+        }   
 
-           <div onClick={handleSave} className='save'>
-               <p>Save session</p>
-           </div>
+        {
+            localStorage.getItem('authUser') === 'null' &&
+            <div onClick={goRegister} className='save'>
+                <p>Register</p>
+            </div> 
+        }   
+
         </div>
     );
 };

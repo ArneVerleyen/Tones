@@ -35,7 +35,10 @@ const Triads = () => {
         augmented: {right: 0, total: 0},
         diminished: {right: 0, total: 0},
         sus2: {right: 0, total: 0},
-        sus4: {right: 0, total: 0}
+        sus4: {right: 0, total: 0},
+        dominant_seventh: {right: 0, total: 0},
+        minor_seventh: {right: 0, total: 0},
+        major_seventh: {right: 0, total: 0},
     });
 
 
@@ -460,7 +463,7 @@ const Triads = () => {
 
                 <div className='intervals-footer'>
                     <div className='icons-container'>
-                        <Link to={ROUTES.TRIADS_INFO}>                            
+                        <Link to={ROUTES.CHORDS_INFO}>                            
                             <svg xmlns="http://www.w3.org/2000/svg" width="38" height="108" viewBox="0 0 38 108">
                                 <text id="_" data-name="?" transform="translate(19 85)" fill="#ffb94e" fontSize="95" fontFamily="Baskerville"><tspan x="-18.81" y="0">?</tspan></text>
                             </svg>

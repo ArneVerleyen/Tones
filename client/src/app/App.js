@@ -32,11 +32,12 @@ import {
 import * as Routes from './routes';
 
 import {RouteWithLayout} from './utilities';
-import {PageLayOut} from './layout';
+import {FooterLayOut, PageLayOut} from './layout';
 
 // Services
 import { ApiProvider } from './services';
 import { AuthProvider } from './services';
+import { ChordsInfo, IntervalsInfo } from './components';
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
                 <ApiProvider>
                     <Switch>
                         <Redirect exact path = {Routes.LANDING} to = {Routes.HOME} />
-                        <RouteWithLayout exact path = {Routes.HOME} component = {HomePage} layout = {PageLayOut} />
+                        <RouteWithLayout exact path = {Routes.HOME} component = {HomePage} layout = {FooterLayOut} />
 
                         <RouteWithLayout exact path = {Routes.TRAINING} component = {TrainingPage} layout = {PageLayOut} />
                         
@@ -62,6 +63,10 @@ function App() {
                        
                         <RouteWithLayout exact path = {Routes.CHORDS_SETTINGS} component = {ChordsSettingsPage} layout = {PageLayOut} />
                         <RouteWithLayout exact path = {Routes.CHORDS} component = {ChordsPage} layout = {PageLayOut} />
+
+                        <RouteWithLayout exact path = {Routes.CHORDS_INFO} component = {ChordsInfo} layout = {PageLayOut} />
+
+                        <RouteWithLayout exact path = {Routes.INTERVALS_INFO} component = {IntervalsInfo} layout = {PageLayOut} />
                         
                         <RouteWithLayout exact path = {Routes.CHORDS_END_SESSION} component = {EndSessionChordsPage} layout = {PageLayOut} />
 

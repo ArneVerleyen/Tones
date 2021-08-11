@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import * as ROUTES from '../../routes';
 
@@ -92,10 +92,7 @@ const SeventhSettings = () => {
             </div>
 
             <div className='link'>
-                <h3>Recommended training</h3>
-            </div>
-            <div className='link'>
-                <h3>More info about chords</h3>
+                <h3><Link to={ROUTES.CHORDS_INFO}>More info about chords</Link></h3>
             </div>
             <div className='link'>
                 <h3 onClick={start}>Start training</h3>

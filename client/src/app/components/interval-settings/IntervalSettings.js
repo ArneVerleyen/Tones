@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import * as ROUTES from '../../routes';
 
@@ -291,10 +291,7 @@ const IntervalSettings = (props) => {
                 }
             </div>
             <div className='link'>
-                <h3>Recommended training</h3>
-            </div>
-            <div className='link'>
-                <h3>More info about intervals</h3>
+                <h3><Link to={ROUTES.INTERVALS_INFO}>More info about intervals</Link></h3>
             </div>
             <div className='link'>
                 <h3 onClick={start}>Start training</h3>

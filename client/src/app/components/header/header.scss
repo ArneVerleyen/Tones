@@ -1,5 +1,11 @@
 @import '../../app.scss';
 .header-container{
+    #desktop-header{
+        display: none;
+    }
+    #desktop-links{
+        display: none;
+    }
     // background-color: inherit;
     .header-inner-container {
         display: flex;
@@ -57,5 +63,29 @@
             margin-bottom: 5px;
         }
 
+    }
+}
+
+@media screen and (min-width: 730px)  {
+    .header-container{ 
+        /* #desktop-header {
+        //     height: 100px;
+        //     display: flex !important;
+        //     background-color: $color-deep-purple;
+        // }
+        #hide {
+            display: none;
+        }
+        #desktop-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            ul{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        */
     }
 }

@@ -14,8 +14,6 @@ const EndSessionChords = () => {
     const user = JSON.parse(localStorage.getItem('authUser'));
     const settings = JSON.parse(localStorage.getItem('settings'));
 
-    console.log(score);
-
     let history = useHistory();
 
     const handleSave = () => {
@@ -52,6 +50,10 @@ const EndSessionChords = () => {
 
         // change to user profile overview.
         history.push(Routes.TRAINING);
+    };
+    
+    const goRegister = () => {
+        history.push(Routes.AUTH_SIGN_UP);
     };
 
     return (
@@ -125,10 +127,19 @@ const EndSessionChords = () => {
             </div>
 
 
+            {
+                localStorage.getItem('authUser') !== 'null' &&
+                <div onClick={handleSave} className='save'>
+                    <p>Save session</p>
+                </div> 
+            }   
 
-           <div onClick={handleSave} className='save'>
-               <p>Save session</p>
-           </div>
+            {
+                localStorage.getItem('authUser') === 'null' &&
+                <div onClick={goRegister} className='save'>
+                    <p>Register</p>
+                </div> 
+            }   
         </div>
     );
 };

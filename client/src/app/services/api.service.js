@@ -22,9 +22,10 @@ const ApiProvider = ({children}) => {
     const findAllSessionsWithUserId = async (query = null, userId) => {
         let url = `${BASE_URL}/wp-json/wp/v2/session/?user_id=${userId}`;
         if (query !== 0) {
-            url = url + `/?page=${query}`;
+            url = url + `&page=${query}`;
         };
         const response = await fetch(url);
+        console.log(response)
         return response.json();
     };
 
@@ -71,7 +72,7 @@ const ApiProvider = ({children}) => {
     const findAllChordSessionsWithUserId = async (query = null, userId) => {
         let url = `${BASE_URL}/wp-json/wp/v2/chord_session/?user_id=${userId}`;
         if (query !== 0) {
-            url = url + `/?page=${query}`;
+            url = url + `&page=${query}`;
         };
         const response = await fetch(url);
         return response.json();

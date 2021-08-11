@@ -4,6 +4,8 @@ import { useHistory } from 'react-router';
 import * as Routes from '../../routes';
 import { useAuth } from '../../services';
 
+import desktopHeader from '../../_static/images/tones.png';
+
 import './header.scss';
 
 import hamburger from '../../_static/icons/hamburger.svg';
@@ -33,7 +35,7 @@ const Header = () => {
                 <Link to={Routes.HOME}>
                     <img src={logo} className='a-logo' alt='Tones logo' />
                 </Link>
-                <div>
+                <div id='hide'>
                     {!open &&
                         <button onClick={toggleTrue}>
                             <img src={hamburger} alt='click here'/>
@@ -47,7 +49,22 @@ const Header = () => {
                         </div>
                     }
                 </div>
+                <div id='desktop-links'>
+                    <ul>
+                    <Link onClick={toggleFalse} to={Routes.TRAINING}>Training</Link>
+                    {!user && <Link onClick={toggleFalse} to={Routes.AUTH_SIGN_IN}>Login</Link>}
+                    {!user && <Link onClick={toggleFalse} to={Routes.AUTH_SIGN_UP}>Register</Link>}
+                    {user && <Link onClick={toggleFalse} to={Routes.USER_SESSIONS}>Progress</Link>}
+                    {user && <button  onClick={handleLogout}>Logout</button>}
+                    </ul>
+                </div>
 
+            </div>
+            <div id='desktop-header'>
+                <Link to={Routes.HOME}>
+                    <img src={desktopHeader} className='a-logo' alt='Tones logo' />
+                </Link>
+                alo
             </div>
             {open &&
                 <div className='nav-links'>
@@ -60,7 +77,6 @@ const Header = () => {
 
                 </div>
             }
-            
         </header>
     );
 };

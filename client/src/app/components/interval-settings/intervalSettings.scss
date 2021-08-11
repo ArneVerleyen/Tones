@@ -69,6 +69,17 @@
             font-family: $titles;
             width: 91vw;
             border-radius: 24px;
+            a {
+                text-decoration: none;
+                color: $color-yellow;
+                background-color: transparent;
+            }
+            a:hover{
+                color: $color-light-purple;
+            }
+        }
+        h3:hover{
+            color: $color-light-purple;
         }
     }
 

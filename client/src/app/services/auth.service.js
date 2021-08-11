@@ -57,11 +57,11 @@ const AuthProvider = ({children}) => {
 
         const response = await fetch(`${url}`, options);
         const user = await response.json();
-
-        console.log(response);
-    
-        localStorage.setItem('authUser', JSON.stringify(user));
-        setCurrentUser(user);
+        
+        if (response.status === 200) {
+            localStorage.setItem('authUser', JSON.stringify(user));
+            setCurrentUser(user);
+        };
     
         return user;
 
@@ -84,8 +84,6 @@ const AuthProvider = ({children}) => {
 
         const response = await fetch(`${url}`, options);
         const user = await response.json();
-
-        console.log(user);
     
         signIn(body.username, body.password);
     
